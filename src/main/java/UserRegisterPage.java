@@ -5,18 +5,35 @@ public class UserRegisterPage extends PageBase {
 
     private final String url = "http://srkgakezilabda.hu/user_register/";
 
-    //Variables to register
-    private final String fullName = "John Doe";
-    private final String userName = "johndoe";
-    private final String email = "johndoe@foo.bar";
-    private final String password = "JoHnDoE#1";
-
     //WebElements
     private final By fullNameField = By.xpath("//input[@name=\"data[fullname]\"]");
+
+    public By getFullNameField() {
+        return fullNameField;
+    }
     private final By userNameField = By.xpath("//input[@name=\"data[username]\"]");
+
+    public By getUserNameField() {
+        return userNameField;
+    }
     private final By emailField = By.xpath("//input[@name=\"data[email]\"]");
+
+    public By getEmailField() {
+        return emailField;
+    }
+
     private final By password1Field = By.xpath("//input[@name=\"data[password1]\"]");
+
+    public By getPassword1Field() {
+        return password1Field;
+    }
+
     private final By password2Field = By.xpath("//input[@name=\"data[password2]\"]");
+
+    public By getPassword2Field() {
+        return password2Field;
+    }
+
     private final By submitButton = By.xpath("//button[@type=\"submit\"]");
     private final By resetButton = By.xpath("//button[@type=\"reset\"]");
 
