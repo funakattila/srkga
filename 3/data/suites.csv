@@ -1,0 +1,2 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Sat Jun 04 13:23:25 GMT 2022","Sat Jun 04 13:23:37 GMT 2022","11707","","SRKGATest","","SRKGATest","openSite","openSite()",""
