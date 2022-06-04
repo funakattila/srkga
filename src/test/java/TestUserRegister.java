@@ -8,6 +8,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.concurrent.TimeUnit;
 
@@ -84,7 +86,10 @@ public class TestUserRegister {
         userRegisterPage.enterUserDatas("John Doe", "johndoe", "johndoe@foo.bar", "JoHnDoE#1", "JoHnDoE#1");
         userRegisterPage.pressSubmitButton();
 
+        WebDriverWait wait = new WebDriverWait(driver, 20);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@class=\"notices success green\"]/p")));
         WebElement succesLabel = driver.findElement(By.xpath("//*[@class=\"notices success green\"]/p"));
+
         String expected = "Thank you for registering.";
         String actual = succesLabel.getText();
 
