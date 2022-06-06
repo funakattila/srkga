@@ -4,13 +4,14 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
 import java.util.concurrent.TimeUnit;
 
-public class TestOpenFrontPage {
+public class TestAddNewBlogEntry {
     WebDriver driver;
 
     @BeforeEach
@@ -32,13 +33,28 @@ public class TestOpenFrontPage {
     }
 
     @Test
-    @Description("Open the front page of srkgakezilabda.hu")
-    public void openSiteTest() {
-        FrontPage frontPage = new FrontPage(driver);
-        frontPage.navigate();
+    @Description("Login as editor")
+    public void loginAsEditorTest() {
+        AddNewBlogEntryPage addNewBlogEntryPage = new AddNewBlogEntryPage(driver);
 
+        addNewBlogEntryPage.navigateAndLogin();
+
+        String expectedUserName = "Jane Doe";
+        String actualUserName = driver.findElement(By.xpath("//*[@id=\"admin-user-details\"]//h4")).getText();
+
+        Assertions.assertTrue(actualUserName.startsWith(expectedUserName));
+    }
+
+    @Test
+    @Description("Login and create a new blog entry")
+    public void createBlogEntryTest() {
+        AddNewBlogEntryPage addNewBlogEntryPage = new AddNewBlogEntryPage(driver);
+
+        addNewBlogEntryPage.createBlogEntry("Lorem Ipsum");
+        driver.navigate().to("http://srkgakezilabda.hu/blog/lorem-ipsum");
+
+        String expectedUrl = "http://srkgakezilabda.hu/blog/lorem-ipsum";
         String actualUrl = driver.getCurrentUrl();
-        String expectedUrl = "http://srkgakezilabda.hu/";
 
         Assertions.assertEquals(expectedUrl, actualUrl);
     }
@@ -49,5 +65,3 @@ public class TestOpenFrontPage {
     }
 
 }
-
-

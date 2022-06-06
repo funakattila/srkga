@@ -1,5 +1,6 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
 import jdk.jfr.Description;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -37,7 +38,7 @@ public class TestUserRegister {
 
     @Test
     @Description("Navigate to the registration page")
-    public void navigateToRegistrationPage() {
+    public void navigateToRegistrationPageTest() {
         UserRegisterPage userRegisterPage = new UserRegisterPage(driver);
         userRegisterPage.navigate();
 
@@ -95,6 +96,11 @@ public class TestUserRegister {
 
         Assertions.assertEquals(expected, actual);
 
+    }
+
+    @AfterEach
+    public void close() {
+        driver.close();
     }
 
 
