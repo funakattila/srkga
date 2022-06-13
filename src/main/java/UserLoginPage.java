@@ -1,6 +1,6 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-public class UserLoginPage extends PageBase {
+public class UserLoginPage extends BasePage {
 
     private final String url = "http://srkgakezilabda.hu/login";
     private final By userNameField = By.xpath("//input[@name=\"username\"]");

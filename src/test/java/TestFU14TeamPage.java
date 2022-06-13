@@ -1,6 +1,4 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
-import jdk.jfr.Description;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -10,7 +8,8 @@ import org.openqa.selenium.chrome.ChromeOptions;
 
 import java.util.concurrent.TimeUnit;
 
-public class TestOpenFrontPage {
+public class TestFU14TeamPage {
+
     WebDriver driver;
 
     @BeforeEach
@@ -32,22 +31,27 @@ public class TestOpenFrontPage {
     }
 
     @Test
-    @Description("Open the front page of srkgakezilabda.hu")
-    public void openSiteTest() {
-        FrontPage frontPage = new FrontPage(driver);
-        frontPage.navigate();
+    public void teamMembersTest() {
+        Fu14TeamPage fu14TeamPage = new Fu14TeamPage(driver);
 
-        String actualUrl = driver.getCurrentUrl();
-        String expectedUrl = "http://srkgakezilabda.hu/";
+        fu14TeamPage.navigate();
 
-        Assertions.assertEquals(expectedUrl, actualUrl);
+        String[] expected = fu14TeamPage.getTeamMembers();
+        String[] actual = fu14TeamPage.teamMembers();
+
+        Assertions.assertArrayEquals(expected, actual);
     }
 
-    @AfterEach
-    public void close() {
-        driver.close();
+    @Test
+    public void numberOfTeamMembersTest() {
+        Fu14TeamPage fu14TeamPage = new Fu14TeamPage(driver);
+
+        fu14TeamPage.navigate();
+
+        int expected = fu14TeamPage.getTeamMembers().length;
+        int actual = fu14TeamPage.numberOfTeamMembers(fu14TeamPage.getTeamMembers());
+
+        Assertions.assertEquals(expected, actual);
     }
 
 }
-
-

@@ -1,6 +1,6 @@
 import org.openqa.selenium.WebDriver;
 
-public class FrontPage extends PageBase{
+public class FrontPage extends BasePage {
 
     private final String url = "http://srkgakezilabda.hu";
 

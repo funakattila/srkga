@@ -1,9 +1,7 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class AddNewBlogEntryPage extends PageBase{
+public class AddNewBlogEntryPage extends BasePage {
 
     private final String url = "http://srkgakezilabda.hu/admin/pages";
 
@@ -13,7 +11,6 @@ public class AddNewBlogEntryPage extends PageBase{
     private final By userNameField = By.xpath("//input[@name=\"data[username]\"]");
     private final By passwordField = By.xpath("//input[@name=\"data[password]\"]");
     private final By loginButton = By.xpath("//button[@value=\"login\"]");
-
 
     private final By addButton = By.xpath("//*[@id=\"titlebar-add\"]/button[1]");
 

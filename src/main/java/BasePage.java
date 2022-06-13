@@ -4,15 +4,17 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class AllowCookies extends PageBase{
+public abstract class BasePage {
+
+    WebDriver driver;
 
     //Allow cookies popup window
     private final By allowCookiesWindow = By.xpath("//*[@id=\"tecart-cookie-banner\"]");
     //Allow cookies button
     private final By allowCookiesButton = By.xpath("//*[@id=\"tecart-cookie-banner\"]//a");
 
-    public AllowCookies(WebDriver driver) {
-        super(driver);
+    public BasePage(WebDriver driver) {
+        this.driver = driver;
     }
 
     public void clickToAllowCookies() {
@@ -22,6 +24,4 @@ public class AllowCookies extends PageBase{
         wait.until(ExpectedConditions.visibilityOfElementLocated(allowCookiesWindow));
         button.click();
     }
-
-
 }

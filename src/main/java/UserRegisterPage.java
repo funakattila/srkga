@@ -1,7 +1,7 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class UserRegisterPage extends PageBase {
+public class UserRegisterPage extends BasePage {
 
     private final String url = "http://srkgakezilabda.hu/user_register/";
 
@@ -46,7 +46,7 @@ public class UserRegisterPage extends PageBase {
         driver.navigate().to(url);
     }
 
-    public void enterUserDatas(String fullName, String username, String email, String password1, String password2) {
+    public void enterUserData(String fullName, String username, String email, String password1, String password2) {
         driver.findElement(fullNameField).sendKeys(fullName);
         driver.findElement(userNameField).sendKeys(username);
         driver.findElement(emailField).sendKeys(email);
@@ -61,10 +61,4 @@ public class UserRegisterPage extends PageBase {
     public void pressSubmitButton() {
         driver.findElement(submitButton).click();
     }
-
-
-
-
-
-
 }

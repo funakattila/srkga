@@ -41,10 +41,12 @@ public class TestUserLogin {
     @Description("Navigate to the Login page")
     public void navigateToLoginPageTest() {
         UserLoginPage userLoginPage = new UserLoginPage(driver);
+
         userLoginPage.navigate();
 
         String expectedUrl = "http://srkgakezilabda.hu/login";
         String actualUrl = driver.getCurrentUrl();
+
         Assertions.assertEquals(expectedUrl, actualUrl);
     }
 
@@ -52,10 +54,9 @@ public class TestUserLogin {
     @Description("User login to site without remember me function")
     public void loginTest(){
         UserLoginPage userLoginPage = new UserLoginPage(driver);
-        AllowCookies allowCookies = new AllowCookies(driver);
 
         userLoginPage.navigate();
-        allowCookies.clickToAllowCookies();
+        userLoginPage.clickToAllowCookies();
         userLoginPage.loginUser("johndoe", "JoHnDoE#1", false);
 
         WebDriverWait wait = new WebDriverWait(driver, 20);
@@ -64,19 +65,18 @@ public class TestUserLogin {
 
         String expectedName = "John Doe";
         String actualName = welcomeMessageName.getText();
-        Assertions.assertEquals(expectedName, actualName);
 
+        Assertions.assertEquals(expectedName, actualName);
     }
 
     @Test
     @Description("User login to site with remember me function")
     public void loginRememberTest(){
         UserLoginPage userLoginPage = new UserLoginPage(driver);
-        AllowCookies allowCookies = new AllowCookies(driver);
 
         userLoginPage.navigate();
         driver.manage().deleteCookieNamed("grav-rememberme");
-        allowCookies.clickToAllowCookies();
+        userLoginPage.clickToAllowCookies();
         userLoginPage.loginUser("johndoe", "JoHnDoE#1", true);
 
         WebDriverWait wait = new WebDriverWait(driver, 20);
@@ -85,6 +85,7 @@ public class TestUserLogin {
         Cookie rememberMe = driver.manage().getCookieNamed("grav-rememberme");
         String cookieValue = rememberMe.getValue();
         boolean isRememberMe = cookieValue.startsWith("johndoe");
+
         Assertions.assertTrue(isRememberMe);
     }
 

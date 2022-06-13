@@ -40,24 +40,23 @@ public class TestUserRegister {
     @Description("Navigate to the registration page")
     public void navigateToRegistrationPageTest() {
         UserRegisterPage userRegisterPage = new UserRegisterPage(driver);
+
         userRegisterPage.navigate();
 
         String expectedUrl = "http://srkgakezilabda.hu/user_register";
         String actualUrl = driver.getCurrentUrl();
 
         Assertions.assertEquals(expectedUrl, actualUrl);
-
     }
 
     @Test
     @Description("Reset all the entered data from the fields")
     public void userRegistrationResetDataTest() {
         UserRegisterPage userRegisterPage = new UserRegisterPage(driver);
-        AllowCookies allowCookies = new AllowCookies(driver);
 
         userRegisterPage.navigate();
-        allowCookies.clickToAllowCookies();
-        userRegisterPage.enterUserDatas("John Doe", "johndoe", "johndoe@foo.bar", "JoHnDoE#1", "JoHnDoE#1");
+        userRegisterPage.clickToAllowCookies();
+        userRegisterPage.enterUserData("John Doe", "johndoe", "johndoe@foo.bar", "JoHnDoE#1", "JoHnDoE#1");
         userRegisterPage.pressResetButton();
 
         String fullName = driver.findElement(userRegisterPage.getFullNameField()).getText();
@@ -66,25 +65,43 @@ public class TestUserRegister {
         String password1 = driver.findElement(userRegisterPage.getPassword1Field()).getText();
         String password2 = driver.findElement(userRegisterPage.getPassword2Field()).getText();
         boolean isAllFieldEmpty = false;
-
         if(fullName.equals("") && userName.equals("") && email.equals("") && password1.equals("") && password2.equals(
                 "")){
             isAllFieldEmpty = true;
         }
 
         Assertions.assertTrue(isAllFieldEmpty);
-
     }
 
     @Test
-    @Description("Register new user")
-    public void userRegistrationTest() {
+    @Description("Register a new user without full name")
+    public void userRegistrationTestWithoutFullName() {
         UserRegisterPage userRegisterPage = new UserRegisterPage(driver);
-        AllowCookies allowCookies = new AllowCookies(driver);
 
         userRegisterPage.navigate();
-        allowCookies.clickToAllowCookies();
-        userRegisterPage.enterUserDatas("John Doe", "johndoe", "johndoe@foo.bar", "JoHnDoE#1", "JoHnDoE#1");
+        userRegisterPage.clickToAllowCookies();
+        userRegisterPage.enterUserData("", "johndoe", "johndoe@foo.bar", "JoHnDoE#1", "JoHnDoE#1");
+        userRegisterPage.pressSubmitButton();
+
+        WebDriverWait wait = new WebDriverWait(driver, 20);
+        String actual =
+                wait.until(ExpectedConditions.elementToBeClickable(userRegisterPage.getFullNameField())).getAttribute(
+                "validationMessage");
+        String expected = "Kérjük, töltse ki ezt a mezőt.";
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+
+
+    @Test
+    @Description("Register a new user")
+    public void userRegistrationTest() {
+        UserRegisterPage userRegisterPage = new UserRegisterPage(driver);
+
+        userRegisterPage.navigate();
+        userRegisterPage.clickToAllowCookies();
+        userRegisterPage.enterUserData("John Doe", "johndoe", "johndoe@foo.bar", "JoHnDoE#1", "JoHnDoE#1");
         userRegisterPage.pressSubmitButton();
 
         WebDriverWait wait = new WebDriverWait(driver, 20);
@@ -95,7 +112,6 @@ public class TestUserRegister {
         String actual = succesLabel.getText();
 
         Assertions.assertEquals(expected, actual);
-
     }
 
     @AfterEach
