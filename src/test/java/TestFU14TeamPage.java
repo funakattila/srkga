@@ -35,6 +35,7 @@ public class TestFU14TeamPage {
         Fu14TeamPage fu14TeamPage = new Fu14TeamPage(driver);
 
         fu14TeamPage.navigate();
+        fu14TeamPage.clickToAllowCookies();
 
         String[] expected = fu14TeamPage.getTeamMembers();
         String[] actual = fu14TeamPage.teamMembers();
@@ -47,11 +48,42 @@ public class TestFU14TeamPage {
         Fu14TeamPage fu14TeamPage = new Fu14TeamPage(driver);
 
         fu14TeamPage.navigate();
+        fu14TeamPage.clickToAllowCookies();
 
         int expected = fu14TeamPage.getTeamMembers().length;
         int actual = fu14TeamPage.numberOfTeamMembers(fu14TeamPage.getTeamMembers());
 
         Assertions.assertEquals(expected, actual);
     }
+
+    @Test
+    public void fu14AboutTeamTest() {
+        Fu14TeamPage fu14TeamPage = new Fu14TeamPage(driver);
+
+        fu14TeamPage.navigate();
+        fu14TeamPage.clickToAllowCookies();
+
+        String expected = fu14TeamPage.readFileAboutTeam("src/files/about_fu14.txt");
+        String actual = fu14TeamPage.getAboutTeamText();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void saveToFileTest() {
+        Fu14TeamPage fu14TeamPage = new Fu14TeamPage(driver);
+
+        fu14TeamPage.navigate();
+        fu14TeamPage.clickToAllowCookies();
+        fu14TeamPage.createFile();
+        fu14TeamPage.writeToFile();
+    }
+
+
+    @Test
+    public void close() {
+        driver.close();
+    }
+
 
 }

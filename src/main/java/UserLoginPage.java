@@ -9,6 +9,13 @@ public class UserLoginPage extends BasePage {
     private final By forgetLink = By.xpath("//a[@href=\"/forgot_password\"]");
     private final By loginButton = By.xpath("//button[@type=\"submit\"]");
 
+    private final By loginStatus = By.xpath("//*[@class=\"login-status\"]");
+
+    public By getLoginStatus() {
+        return loginStatus;
+    }
+
+
 
     public UserLoginPage(WebDriver driver) {
         super(driver);

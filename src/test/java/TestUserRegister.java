@@ -38,7 +38,7 @@ public class TestUserRegister {
 
     @Test
     @Description("Navigate to the registration page")
-    public void navigateToRegistrationPageTest() {
+    public void openPageTest() {
         UserRegisterPage userRegisterPage = new UserRegisterPage(driver);
 
         userRegisterPage.navigate();
@@ -51,7 +51,7 @@ public class TestUserRegister {
 
     @Test
     @Description("Reset all the entered data from the fields")
-    public void userRegistrationResetDataTest() {
+    public void resetUserDataTest() {
         UserRegisterPage userRegisterPage = new UserRegisterPage(driver);
 
         userRegisterPage.navigate();
@@ -75,7 +75,7 @@ public class TestUserRegister {
 
     @Test
     @Description("Register a new user without full name")
-    public void userRegistrationTestWithoutFullName() {
+    public void userRegistrationWithoutFullNameTest() {
         UserRegisterPage userRegisterPage = new UserRegisterPage(driver);
 
         userRegisterPage.navigate();
