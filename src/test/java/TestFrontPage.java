@@ -1,4 +1,5 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
+import io.qameta.allure.Attachment;
 import jdk.jfr.Description;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
@@ -41,6 +42,24 @@ public class TestFrontPage {
         String actualUrl = driver.getCurrentUrl();
         String expectedUrl = "http://srkgakezilabda.hu/";
         Assertions.assertEquals(expectedUrl, actualUrl);
+    }
+
+
+    @Test
+    @Description("Find the logo on the main page")
+    @Attachment(value = "imageCaptured")
+    public void findLogo() {
+        FrontPage frontPage = new FrontPage(driver);
+
+        frontPage.navigate();
+        frontPage.clickToAllowCookies();
+
+        String expected = TestData.logoPath;
+        String actual = frontPage.findLogo();
+
+        Assertions.assertEquals(expected, actual);
+
+
     }
 
     @AfterEach
