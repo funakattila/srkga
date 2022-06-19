@@ -1,17 +1,16 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
-import jdk.jfr.Description;
+import io.qameta.allure.*;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.io.ByteArrayInputStream;
 import java.util.concurrent.TimeUnit;
 
 public class TestUserRegister {
@@ -36,66 +35,69 @@ public class TestUserRegister {
         driver.manage().window().maximize();
     }
 
-    @Test
     @Description("Navigate to the registration page")
-    public void openPageTest() {
+    @Story("Test user registration")
+    @Severity(SeverityLevel.CRITICAL)
+    @Test
+    public void openRegisterPageTest() {
         UserRegisterPage userRegisterPage = new UserRegisterPage(driver);
+        WebDriverWait wait = new WebDriverWait(driver, 30);
 
         userRegisterPage.navigate();
+        userRegisterPage.clickToAllowCookies();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.tagName("h1")));
+        Allure.addAttachment("The register site opens",
+                new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
 
-        String expectedUrl = "http://srkgakezilabda.hu/user_register";
-        String actualUrl = driver.getCurrentUrl();
+        String expected = TestData.registerUserPageTitle;
+        String actual = userRegisterPage.getPageTitle();
 
-        Assertions.assertEquals(expectedUrl, actualUrl);
+        Assertions.assertEquals(expected, actual);
     }
 
-    @Test
     @Description("Reset all the entered data from the fields")
+    @Story("Test user registration")
+    @Severity(SeverityLevel.MINOR)
+    @Test
     public void resetUserDataTest() {
         UserRegisterPage userRegisterPage = new UserRegisterPage(driver);
 
         userRegisterPage.navigate();
         userRegisterPage.clickToAllowCookies();
         userRegisterPage.enterUserData("John Doe", "johndoe", "johndoe@foo.bar", "JoHnDoE#1", "JoHnDoE#1");
+        Allure.addAttachment("The form filled with data",
+                new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
         userRegisterPage.pressResetButton();
+        Allure.addAttachment("The form after press the reset button",
+                new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
 
-        String fullName = driver.findElement(userRegisterPage.getFullNameField()).getText();
-        String userName = driver.findElement(userRegisterPage.getUserNameField()).getText();
-        String email = driver.findElement(userRegisterPage.getEmailField()).getText();
-        String password1 = driver.findElement(userRegisterPage.getPassword1Field()).getText();
-        String password2 = driver.findElement(userRegisterPage.getPassword2Field()).getText();
-        boolean isAllFieldEmpty = false;
-        if(fullName.equals("") && userName.equals("") && email.equals("") && password1.equals("") && password2.equals(
-                "")){
-            isAllFieldEmpty = true;
-        }
-
-        Assertions.assertTrue(isAllFieldEmpty);
+        Assertions.assertTrue(userRegisterPage.isAllFieldEmpty());
     }
 
-    @Test
     @Description("Register a new user without full name")
+    @Story("Test user registration")
+    @Severity(SeverityLevel.CRITICAL)
+    @Test
     public void userRegistrationWithoutFullNameTest() {
         UserRegisterPage userRegisterPage = new UserRegisterPage(driver);
 
         userRegisterPage.navigate();
         userRegisterPage.clickToAllowCookies();
         userRegisterPage.enterUserData("", "johndoe", "johndoe@foo.bar", "JoHnDoE#1", "JoHnDoE#1");
+        Allure.addAttachment("The Full Name field is empty",
+                new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
         userRegisterPage.pressSubmitButton();
+        Allure.addAttachment("Registration failed",
+                new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
 
-        WebDriverWait wait = new WebDriverWait(driver, 20);
-        String actual =
-                wait.until(ExpectedConditions.elementToBeClickable(userRegisterPage.getFullNameField())).getAttribute(
-                "validationMessage");
-        String expected = "Kérjük, töltse ki ezt a mezőt.";
-
-        Assertions.assertEquals(expected, actual);
+        Assertions.assertTrue(userRegisterPage.isOneFieldEmpty());
     }
 
 
-
-    @Test
     @Description("Register a new user")
+    @Story("Test user registration")
+    @Severity(SeverityLevel.CRITICAL)
+    @Test
     public void userRegistrationTest() {
         UserRegisterPage userRegisterPage = new UserRegisterPage(driver);
 
@@ -107,8 +109,10 @@ public class TestUserRegister {
         WebDriverWait wait = new WebDriverWait(driver, 20);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@class=\"notices success green\"]/p")));
         WebElement succesLabel = driver.findElement(By.xpath("//*[@class=\"notices success green\"]/p"));
+        Allure.addAttachment("Registration success",
+                new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
 
-        String expected = "Thank you for registering.";
+        String expected = TestData.registrationSuccesText;
         String actual = succesLabel.getText();
 
         Assertions.assertEquals(expected, actual);

@@ -13,5 +13,9 @@ public class TestData {
             "szezont", "Adó 1% felajánlása"}; // titles of the latest blog entries on the main page
 
 
+    // TestUserRegister
+
+    public final static String registerUserPageTitle = "Register";
+    public final static String registrationSuccesText = "Thank you for registering.";
 
 }
