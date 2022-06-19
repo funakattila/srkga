@@ -24,4 +24,5 @@ public abstract class BasePage {
         wait.until(ExpectedConditions.visibilityOfElementLocated(allowCookiesWindow));
         button.click();
     }
+
 }

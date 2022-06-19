@@ -3,6 +3,8 @@ import io.qameta.allure.Attachment;
 import io.qameta.allure.Description;
 import io.qameta.allure.Story;
 import org.junit.jupiter.api.*;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -28,6 +30,11 @@ public class TestFrontPage {
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         driver.manage().window().maximize();
+    }
+
+    @Attachment(value = "Screenshot", type = "image/png")
+    public byte[] screenshot() {
+        return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
     }
 
     @Description("Check the url of the front page")
@@ -68,6 +75,8 @@ public class TestFrontPage {
 
         String expected = TestData.logoPath;
         String actual = frontPage.findLogo();
+
+        screenshot();
 
         Assertions.assertEquals(expected, actual);
     }
