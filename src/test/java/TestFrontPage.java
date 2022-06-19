@@ -1,13 +1,14 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
-import io.qameta.allure.Allure;
-import io.qameta.allure.Description;
-import io.qameta.allure.Story;
+import io.qameta.allure.*;
 import org.junit.jupiter.api.*;
+import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.ByteArrayInputStream;
 import java.util.concurrent.TimeUnit;
@@ -35,6 +36,7 @@ public class TestFrontPage {
 
     @Description("Check the url of the front page")
     @Story("Test the front page")
+    @Severity(SeverityLevel.BLOCKER)
     @Test
     public void checkSiteURL() {
         FrontPage frontPage = new FrontPage(driver);
@@ -48,6 +50,7 @@ public class TestFrontPage {
 
     @Description("Allow cookies")
     @Story("Test the front page")
+    @Severity(SeverityLevel.NORMAL)
     @Disabled
     @Test
     public void allowCookies() {
@@ -62,9 +65,11 @@ public class TestFrontPage {
 
     @Description("Find the logo on the main page")
     @Story("Test the front page")
+    @Severity(SeverityLevel.NORMAL)
     @Test
     public void findLogo() {
         FrontPage frontPage = new FrontPage(driver);
+        WebDriverWait wait = new WebDriverWait(driver, 30);
 
         frontPage.navigate();
         frontPage.clickToAllowCookies();
@@ -72,6 +77,7 @@ public class TestFrontPage {
         String expected = TestData.logoPath;
         String actual = frontPage.findLogo();
 
+        wait.until(ExpectedConditions.visibilityOfElementLocated((By.id("logo"))));
         Allure.addAttachment("Screenshot", new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
 
         Assertions.assertEquals(expected, actual);
@@ -79,6 +85,7 @@ public class TestFrontPage {
 
     @Description("Check the number of the latest blog entries")
     @Story("Test the front page")
+    @Severity(SeverityLevel.CRITICAL)
     @Test
     public void numberOfBlogEntries() {
         FrontPage frontPage = new FrontPage(driver);
@@ -94,6 +101,7 @@ public class TestFrontPage {
 
     @Description("Check the titles of the blog entries")
     @Story("Test the front page")
+    @Severity(SeverityLevel.CRITICAL)
     @Disabled
     @Test
     public void checkTitles() {
@@ -110,6 +118,7 @@ public class TestFrontPage {
 
     @Description("Check all the team photos are present in the carousel")
     @Story("Test the front page")
+    @Severity(SeverityLevel.CRITICAL)
     @Test
     public void isAllImagePresent() {
         FrontPage frontPage = new FrontPage(driver);
