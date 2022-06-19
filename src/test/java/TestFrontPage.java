@@ -51,13 +51,21 @@ public class TestFrontPage {
     @Description("Allow cookies")
     @Story("Test the front page")
     @Severity(SeverityLevel.NORMAL)
-    @Disabled
     @Test
     public void allowCookies() {
         FrontPage frontPage = new FrontPage(driver);
+        WebDriverWait wait = new WebDriverWait(driver, 30);
 
         frontPage.navigate();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@aria-label=\"cookieconsent\"]")));
+        Allure.addAttachment("Before accept cookies",
+                new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
+
         frontPage.clickToAllowCookies();
+
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@aria-label=\"cookieconsent\"]")));
+        Allure.addAttachment("After accept cookies",
+                new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
 
         Assertions.assertFalse(frontPage.isCookieBannerVisible());
 
@@ -78,7 +86,8 @@ public class TestFrontPage {
         String actual = frontPage.findLogo();
 
         wait.until(ExpectedConditions.visibilityOfElementLocated((By.id("logo"))));
-        Allure.addAttachment("Screenshot", new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
+        Allure.addAttachment("The logo on the main page",
+                new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
 
         Assertions.assertEquals(expected, actual);
     }

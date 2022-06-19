@@ -11,7 +11,8 @@ public class FrontPage extends BasePage {
 
     private final String url = "http://srkgakezilabda.hu"; //  main URL
 
-    private final By allowCookiesBox = By.id("tecart-cookie-banner");
+    private final By allowCookiesBox = By.xpath("//div[@aria-label=\"cookieconsent\"]"); // allow cookies div
+
     private final By logoImage = By.id("logo"); //logo of the site
     private final By blogEntryTitle = By.xpath("//*[@class=\"card\"]//h3");
     private final String cardFooter = "//*[@class=\"card-footer\"]";
@@ -30,7 +31,7 @@ public class FrontPage extends BasePage {
 
     public boolean isCookieBannerVisible() {
         String style = driver.findElement(allowCookiesBox).getAttribute("style");
-        if (style.equals("display:none")) {
+        if (style.equals("display: none;")) {
             return false;
         }
 
