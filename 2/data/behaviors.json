@@ -1,1 +1,0 @@
-{"uid":"b1a8273437954620fa374b796ffaacdd","children":[{"name":"openSite()","uid":"1e9a5d5ade54d92","parentUid":"b1a8273437954620fa374b796ffaacdd","status":"broken","time":{"start":1654348559466,"stop":1654348560200,"duration":734},"flaky":false,"newFailed":false,"newPassed":false,"newBroken":false,"retriesCount":0,"retriesStatusChange":false,"parameters":[]}],"name":"behaviors"}
