@@ -87,6 +87,7 @@ public class TestUserRegister {
         Allure.addAttachment("The Full Name field is empty",
                 new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
         userRegisterPage.pressSubmitButton();
+
         Allure.addAttachment("Registration failed",
                 new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
 
@@ -100,19 +101,19 @@ public class TestUserRegister {
     @Test
     public void userRegistrationTest() {
         UserRegisterPage userRegisterPage = new UserRegisterPage(driver);
+        WebDriverWait wait = new WebDriverWait(driver, 20);
 
         userRegisterPage.navigate();
         userRegisterPage.clickToAllowCookies();
         userRegisterPage.enterUserData("John Doe", "johndoe", "johndoe@foo.bar", "JoHnDoE#1", "JoHnDoE#1");
         userRegisterPage.pressSubmitButton();
 
-        WebDriverWait wait = new WebDriverWait(driver, 20);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@class=\"notices success green\"]/p")));
         WebElement succesLabel = driver.findElement(By.xpath("//*[@class=\"notices success green\"]/p"));
         Allure.addAttachment("Registration success",
                 new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
 
-        String expected = TestData.registrationSuccesText;
+        String expected = TestData.registrationSuccessText;
         String actual = succesLabel.getText();
 
         Assertions.assertEquals(expected, actual);
