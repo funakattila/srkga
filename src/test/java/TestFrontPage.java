@@ -1,5 +1,5 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
-import io.qameta.allure.Attachment;
+import io.qameta.allure.Allure;
 import io.qameta.allure.Description;
 import io.qameta.allure.Story;
 import org.junit.jupiter.api.*;
@@ -9,6 +9,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
+import java.io.ByteArrayInputStream;
 import java.util.concurrent.TimeUnit;
 
 public class TestFrontPage {
@@ -30,11 +31,6 @@ public class TestFrontPage {
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         driver.manage().window().maximize();
-    }
-
-    @Attachment(value = "Screenshot", type = "image/png")
-    public byte[] screenshot() {
-        return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
     }
 
     @Description("Check the url of the front page")
@@ -76,7 +72,7 @@ public class TestFrontPage {
         String expected = TestData.logoPath;
         String actual = frontPage.findLogo();
 
-        screenshot();
+        Allure.addAttachment("Screenshot", new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
 
         Assertions.assertEquals(expected, actual);
     }
