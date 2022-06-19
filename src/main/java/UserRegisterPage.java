@@ -1,6 +1,12 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
 public class UserRegisterPage extends BasePage {
 
     private final String url = "http://srkgakezilabda.hu/user_register/";
@@ -65,6 +71,27 @@ public class UserRegisterPage extends BasePage {
         }
 
         return false;
+    }
+
+    public List<String[]> addUsersFromFile(String file) {
+        List<String[]> users = new ArrayList<String[]>();
+
+        try {
+            File myObj = new File(file);
+            Scanner myReader = new Scanner(myObj);
+
+            while (myReader.hasNextLine()) {
+                String data = myReader.nextLine();
+                String[] user = data.split("; ");
+                users.add(user);
+            }
+            myReader.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+
+        return users;
     }
 
     public void pressResetButton() {

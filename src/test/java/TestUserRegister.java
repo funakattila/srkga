@@ -11,6 +11,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.ByteArrayInputStream;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class TestUserRegister {
@@ -108,6 +109,9 @@ public class TestUserRegister {
         userRegisterPage.enterUserData("John Doe", "johndoe", "johndoe@foo.bar", "JoHnDoE#1", "JoHnDoE#1");
         userRegisterPage.pressSubmitButton();
 
+        Allure.addAttachment("Screenshot",
+                new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
+
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@class=\"notices success green\"]/p")));
         WebElement succesLabel = driver.findElement(By.xpath("//*[@class=\"notices success green\"]/p"));
         Allure.addAttachment("Registration success",
@@ -117,6 +121,38 @@ public class TestUserRegister {
         String actual = succesLabel.getText();
 
         Assertions.assertEquals(expected, actual);
+    }
+
+    @Description("Register a new users from file")
+    @Story("Test user registration")
+    @Severity(SeverityLevel.NORMAL)
+    @Test
+    public void userRegistrationFromFileTest() {
+        UserRegisterPage userRegisterPage = new UserRegisterPage(driver);
+
+        userRegisterPage.navigate();
+        userRegisterPage.clickToAllowCookies();
+        List<String[]> list = userRegisterPage.addUsersFromFile("src/files/users.txt");
+
+        for (int i = 0; i < list.size(); i++) {
+            String[] user = list.get(i);
+
+            String fullname = user[0];
+            String username = user[1];
+            String email = user[2];
+            String password1 = user[3];
+            String password2 = user[4];
+
+            userRegisterPage.enterUserData(fullname, username, email, password1, password2);
+            userRegisterPage.pressSubmitButton();
+            Allure.addAttachment("Registration success",
+                    new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
+
+            userRegisterPage.navigate();
+        }
+
+
+
     }
 
     @AfterEach
