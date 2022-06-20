@@ -1,3 +1,0 @@
-"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
-"broken","Sat Jun 04 14:30:59 GMT 2022","Sat Jun 04 14:31:00 GMT 2022","764","","SRKGATest","","SRKGATest","openSite","openSite()",""
-"broken","Sat Jun 04 14:31:00 GMT 2022","Sat Jun 04 14:31:00 GMT 2022","145","","SRKGATest","","SRKGATest","createUser","createUser()",""
