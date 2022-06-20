@@ -18,4 +18,8 @@ public class TestData {
     public final static String registerUserPageTitle = "Register";
     public final static String registrationSuccessText = "Thank you for registering.";
 
+    // TestUserLogin
+
+    public final static String loginUserPageTitle = "User Login";
+
 }

@@ -3,6 +3,7 @@ import org.openqa.selenium.WebDriver;
 public class UserLoginPage extends BasePage {
 
     private final String url = "http://srkgakezilabda.hu/login";
+    private final By pageTitle = By.tagName("h1");
     private final By userNameField = By.xpath("//input[@name=\"username\"]");
     private final By userPasswordField = By.xpath("//input[@name=\"password\"]");
     private final By rememberMeCheckBox = By.xpath("//input[@name=\"rememberme\"]");
@@ -11,11 +12,6 @@ public class UserLoginPage extends BasePage {
 
     private final By loginStatus = By.xpath("//*[@class=\"login-status\"]");
 
-    public By getLoginStatus() {
-        return loginStatus;
-    }
-
-
 
     public UserLoginPage(WebDriver driver) {
         super(driver);
@@ -23,6 +19,10 @@ public class UserLoginPage extends BasePage {
 
     public void navigate() {
         driver.navigate().to(url);
+    }
+
+    public String getPageTitle() {
+        return driver.findElement(pageTitle).getText();
     }
 
     public void loginUser(String username, String password, boolean isRememberMe) {

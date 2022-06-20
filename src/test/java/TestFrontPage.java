@@ -36,7 +36,7 @@ public class TestFrontPage {
 
     @Description("Check the url of the front page")
     @Story("Test the front page")
-    @Severity(SeverityLevel.BLOCKER)
+    @Severity(SeverityLevel.TRIVIAL)
     @Test
     public void checkSiteURL() {
         FrontPage frontPage = new FrontPage(driver);

@@ -38,7 +38,7 @@ public class TestUserRegister {
 
     @Description("Navigate to the registration page")
     @Story("Test user registration")
-    @Severity(SeverityLevel.CRITICAL)
+    @Severity(SeverityLevel.TRIVIAL)
     @Test
     public void openRegisterPageTest() {
         UserRegisterPage userRegisterPage = new UserRegisterPage(driver);
@@ -47,7 +47,7 @@ public class TestUserRegister {
         userRegisterPage.navigate();
         userRegisterPage.clickToAllowCookies();
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.tagName("h1")));
-        Allure.addAttachment("The register site opens",
+        Allure.addAttachment("The register page opens",
                 new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
 
         String expected = TestData.registerUserPageTitle;

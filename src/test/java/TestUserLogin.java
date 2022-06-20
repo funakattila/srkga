@@ -1,18 +1,16 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
-import jdk.jfr.Description;
+import io.qameta.allure.*;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Cookie;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.io.ByteArrayInputStream;
 import java.util.concurrent.TimeUnit;
 
 public class TestUserLogin {
@@ -37,21 +35,29 @@ public class TestUserLogin {
         driver.manage().window().maximize();
     }
 
+    @Description("Navigate to user login page")
+    @Story("Test user login")
+    @Severity(SeverityLevel.TRIVIAL)
     @Test
-    @Description("Navigate to the Login page")
     public void navigateToLoginPageTest() {
         UserLoginPage userLoginPage = new UserLoginPage(driver);
 
         userLoginPage.navigate();
+        userLoginPage.clickToAllowCookies();
 
-        String expectedUrl = "http://srkgakezilabda.hu/login";
-        String actualUrl = driver.getCurrentUrl();
+        Allure.addAttachment("The login page opens",
+                new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
 
-        Assertions.assertEquals(expectedUrl, actualUrl);
+        String expected = TestData.loginUserPageTitle;
+        String actual = userLoginPage.getPageTitle();
+
+        Assertions.assertEquals(expected, actual);
     }
 
+    @Description("Test user login without remember me function")
+    @Story("Test user login")
+    @Severity(SeverityLevel.NORMAL)
     @Test
-    @Description("User login to site without remember me function")
     public void loginTest(){
         UserLoginPage userLoginPage = new UserLoginPage(driver);
 
@@ -69,8 +75,10 @@ public class TestUserLogin {
         Assertions.assertEquals(expectedName, actualName);
     }
 
-    @Test
     @Description("User login to site with remember me function")
+    @Story("Test user login")
+    @Severity(SeverityLevel.NORMAL)
+    @Test
     public void loginRememberTest(){
         UserLoginPage userLoginPage = new UserLoginPage(driver);
 
@@ -88,8 +96,6 @@ public class TestUserLogin {
 
         Assertions.assertTrue(isRememberMe);
     }
-
-
 
     @AfterEach
     public void close() {
