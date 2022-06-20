@@ -6,8 +6,6 @@ public class AddNewBlogEntryPage extends BasePage {
     private final String url = "http://srkgakezilabda.hu/admin/pages";
 
     //Log in settings
-    private final String username = "janedoe";
-    private final String password = "JaNeDoE#1";
     private final By userNameField = By.xpath("//input[@name=\"data[username]\"]");
     private final By passwordField = By.xpath("//input[@name=\"data[password]\"]");
     private final By loginButton = By.xpath("//button[@value=\"login\"]");
@@ -28,7 +26,7 @@ public class AddNewBlogEntryPage extends BasePage {
     //add page tabs
     //content tab
     private final By contentTabLink = By.xpath("//*[@class=\"tabs-nav\"]/a[1]");
-    private final By blogText = By.xpath("//pre[@role=\"presentation\"]/span");
+    private final By blogText = By.xpath("//pre[@role=\"presentation\"]/span/span");
 
     private final String text = """
                                 ## Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -47,14 +45,17 @@ public class AddNewBlogEntryPage extends BasePage {
 
     private final By saveContentButton = By.xpath("//button[@type=\"submit\"]");
 
+    private final By blogTitle = By.xpath("//*[@class=\"list-blog-header\"]/h3/a");
+
+
     public AddNewBlogEntryPage(WebDriver driver) {
         super(driver);
     }
 
     public void navigateAndLogin() {
         driver.navigate().to(url);
-        driver.findElement(userNameField).sendKeys(username);
-        driver.findElement(passwordField).sendKeys(password);
+        driver.findElement(userNameField).sendKeys(TestData.editorUsername);
+        driver.findElement(passwordField).sendKeys(TestData.editorPassword);
         driver.findElement(loginButton).click();
     }
 
@@ -73,6 +74,10 @@ public class AddNewBlogEntryPage extends BasePage {
         driver.findElement(optionsTabLink).click();
         //driver.findElement(unpublishedButton).click();
         driver.findElement(saveContentButton).click();
+    }
+
+    public String getNewBlogEntryTitle() {
+        return driver.findElement(blogTitle).getText();
     }
 
 }

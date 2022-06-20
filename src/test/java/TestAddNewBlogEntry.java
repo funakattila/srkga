@@ -1,14 +1,17 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
-import jdk.jfr.Description;
+import io.qameta.allure.*;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
+import java.io.ByteArrayInputStream;
 import java.util.concurrent.TimeUnit;
 
 public class TestAddNewBlogEntry {
@@ -32,8 +35,10 @@ public class TestAddNewBlogEntry {
         driver.manage().window().maximize();
     }
 
+    @Description("User login as editor")
+    @Story("Create blog entry")
+    @Severity(SeverityLevel.CRITICAL)
     @Test
-    @Description("Login as editor")
     public void loginAsEditorTest() {
         AddNewBlogEntryPage addNewBlogEntryPage = new AddNewBlogEntryPage(driver);
 
@@ -45,18 +50,22 @@ public class TestAddNewBlogEntry {
         Assertions.assertTrue(actualUserName.startsWith(expectedUserName));
     }
 
-    @Test
     @Description("Login and create a new blog entry")
+    @Story("Create blog entry")
+    @Severity(SeverityLevel.CRITICAL)
+    @Test
     public void createBlogEntryTest() {
         AddNewBlogEntryPage addNewBlogEntryPage = new AddNewBlogEntryPage(driver);
 
         addNewBlogEntryPage.createBlogEntry("Lorem Ipsum");
         driver.navigate().to("http://srkgakezilabda.hu/blog/lorem-ipsum");
+        Allure.addAttachment("New blog entry",
+                new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
 
-        String expectedUrl = "http://srkgakezilabda.hu/blog/lorem-ipsum";
-        String actualUrl = driver.getCurrentUrl();
+        String expected = TestData.newBlogEntryTitle.toUpperCase();
+        String actual = addNewBlogEntryPage.getNewBlogEntryTitle();
 
-        Assertions.assertEquals(expectedUrl, actualUrl);
+        Assertions.assertEquals(expected, actual);
     }
 
     @AfterEach
