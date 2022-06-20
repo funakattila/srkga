@@ -20,24 +20,8 @@ public class Fu14TeamPage extends BasePage {
     private final By player = By.xpath("//*[@class=\"col-sm-6 col-md-4 col-lg-3 player\"]");
     private final By footer = By.xpath("//*[@class=\"footer\"]");
     private final String url = "http://srkgakezilabda.hu/csapataink/fu-14";
-
-    // át kell tenni a teszt fileba
-    // innen
-    private final String name = "FU14";
-    private final String trainer = "Pánczél Zoltán";
-    private final String[] teamMembers = {"Árokszállási Péter Endre", "Csallóközi Ákos", "Csőre Bence Álmos", "Ferkó Zsombor " +
-            "Máté", "Funák Zétény Nemere", "Funák Zolta Kadosa", "Hanuder Dániel", "Hegedüs Bottyán", "Király Csaba " +
-            "Milán", "Oláh-Hutka Ábel Bendegúz", "Pisztró Tamás", "Sajószegi Tamás", "Takács Máté"};
-
-    public String[] getTeamMembers() {
-        return teamMembers;
-    }
-
     private final String baseImgUrl = "/user/pages/02.csapataink/05.fu-14/";
-
     private final String fileToSavePath = "src/files/save_from_site_fu14.txt";
-
-    // eddig
 
     public Fu14TeamPage(WebDriver driver) {
         super(driver);

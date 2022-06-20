@@ -23,4 +23,11 @@ public class TestData {
     public final static String editorPassword = "JaNeDoE#1";
     public final static String newBlogEntryTitle = "Lorem Ipsum";
 
+    // TestFU14TeamPage
+    public final static String name = "FU14";
+    public final static String trainer = "Pánczél Zoltán";
+    public final static String[] teamMembers = {"Árokszállási Péter Endre", "Csallóközi Ákos", "Csőre Bence Álmos", "Ferkó Zsombor " +
+            "Máté", "Funák Zétény Nemere", "Funák Zolta Kadosa", "Hanuder Dániel", "Hegedüs Bottyán", "Király Csaba " +
+            "Milán", "Oláh-Hutka Ábel Bendegúz", "Pisztró Tamás", "Sajószegi Tamás", "Takács Máté"};
+
 }
