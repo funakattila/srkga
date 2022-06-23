@@ -9,6 +9,11 @@ import java.io.ByteArrayInputStream;
 
 public class TestUserLogin extends TestBase{
 
+    /**************************************************
+     * Tests of this page
+     **************************************************/
+
+    // Navigate to user login page
     @Description("Navigate to user login page")
     @Story("Test user login")
     @Severity(SeverityLevel.TRIVIAL)
@@ -28,6 +33,7 @@ public class TestUserLogin extends TestBase{
         Assertions.assertEquals(expected, actual);
     }
 
+    // Test user login without remember me function
     @Description("Test user login without remember me function")
     @Story("Test user login")
     @Severity(SeverityLevel.NORMAL)
@@ -49,6 +55,7 @@ public class TestUserLogin extends TestBase{
         Assertions.assertEquals(expectedName, actualName);
     }
 
+    // User login to site with remember me function
     @Description("User login to site with remember me function")
     @Story("Test user login")
     @Severity(SeverityLevel.NORMAL)

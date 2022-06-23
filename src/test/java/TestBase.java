@@ -12,6 +12,11 @@ public class TestBase {
     protected WebDriver driver;
     protected WebDriverWait wait;
 
+    /**************************************************
+     * Set the Basic Annotations and Methods
+     **************************************************/
+
+    // Setup the chrome browser
     @BeforeEach
     public void Setup()
     {
@@ -31,9 +36,11 @@ public class TestBase {
         driver.manage().window().maximize();
     }
 
+    // Close the browser
     @AfterEach
     public void Close()
     {
         //driver.close();
     }
+
 }

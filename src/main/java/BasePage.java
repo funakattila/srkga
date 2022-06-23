@@ -6,13 +6,24 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public abstract class BasePage {
 
-    WebDriver driver;
-    WebDriverWait wait;
+    protected WebDriver driver;
+    protected WebDriverWait wait;
 
-    //Allow cookies popup window
+
+    /**************************************************
+     * Web Elements of the page
+     **************************************************/
+
+    // Allow cookies popup window
     private final By allowCookiesWindow = By.xpath("//*[@id=\"tecart-cookie-banner\"]");
-    //Allow cookies button
+
+    // Allow cookies button
     private final By allowCookiesButton = By.xpath("//*[@id=\"tecart-cookie-banner\"]//a");
+
+
+    /**************************************************
+     * Constructors
+     **************************************************/
 
     public BasePage(WebDriver driver) {
         this.driver = driver;
@@ -24,10 +35,15 @@ public abstract class BasePage {
     }
 
 
+    /**************************************************
+     * Methods
+     **************************************************/
+
+    // Click the button to allow the cookies method
     public void clickToAllowCookies() {
         WebElement button = driver.findElement(allowCookiesButton);
 
-        WebDriverWait wait = new WebDriverWait(driver, 30);
+        wait = new WebDriverWait(driver, 30);
         wait.until(ExpectedConditions.visibilityOfElementLocated(allowCookiesWindow));
         button.click();
     }

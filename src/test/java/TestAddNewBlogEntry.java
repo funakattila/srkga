@@ -10,6 +10,11 @@ import java.io.ByteArrayInputStream;
 
 public class TestAddNewBlogEntry extends TestBase{
 
+    /**************************************************
+     * Tests of this page
+     **************************************************/
+
+    // User login as editor
     @Description("User login as editor")
     @Story("Create blog entry")
     @Severity(SeverityLevel.CRITICAL)
@@ -25,6 +30,7 @@ public class TestAddNewBlogEntry extends TestBase{
         Assertions.assertTrue(actualUserName.startsWith(expectedUserName));
     }
 
+    // Login and create a new blog entry
     @Description("Login and create a new blog entry")
     @Story("Create blog entry")
     @Severity(SeverityLevel.CRITICAL)

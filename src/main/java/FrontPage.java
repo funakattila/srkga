@@ -9,17 +9,36 @@ import java.util.List;
 
 public class FrontPage extends BasePage {
 
-    private final String url = "http://srkgakezilabda.hu"; //  main URL
 
+    /**************************************************
+     * Web elements of the page
+     **************************************************/
+
+    // The URL of this site
+    private final String url = "http://srkgakezilabda.hu";
+
+    // The Allow Cookies box
     private final By allowCookiesBox = By.xpath("//div[@aria-label=\"cookieconsent\"]"); // allow cookies div
 
-    private final By logoImage = By.id("logo"); //logo of the site
+    // The logo of the site
+    private final By logoImage = By.id("logo");
+
+    // Title of a blog entry
     private final By blogEntryTitle = By.xpath("//*[@class=\"card\"]//h3");
-    private final String cardFooter = "//*[@class=\"card-footer\"]";
-    private final By blogTitle = By.xpath("//*[@class=\"list-blog-header\"]/h3");
+
+    //private final String cardFooter = "//*[@class=\"card-footer\"]";
+    //private final By blogTitle = By.xpath("//*[@class=\"list-blog-header\"]/h3");
+
+    // A carousel item
     private final By carouselItem = By.xpath("//*[@class=\"carousel-inner\"]/div");
+
+    // An image in a carousel item
     private final By carouselImage = By.xpath("//*[@class= \"carousel-inner\"]//img");
 
+
+    /**************************************************
+     * Constructors
+     **************************************************/
 
     public FrontPage(WebDriver driver) {
         super(driver);
@@ -30,10 +49,16 @@ public class FrontPage extends BasePage {
     }
 
 
+    /**************************************************
+     * Methods
+     **************************************************/
+
+    // Navigate to the page
     public void navigate() {
         driver.navigate().to(url);
     }
 
+    // Inspection of the visibility of the cookie banner
     public boolean isCookieBannerVisible() {
         String style = driver.findElement(allowCookiesBox).getAttribute("style");
         if (style.equals("display: none;")) {
@@ -43,7 +68,7 @@ public class FrontPage extends BasePage {
         return true;
     }
 
-
+    // Are all the carousel images present?
     public boolean isAllImagePresent() {
         int carouselNum = driver.findElements(carouselItem).size();
         int carouselImg = driver.findElements(carouselImage).size();
@@ -51,12 +76,13 @@ public class FrontPage extends BasePage {
         return isAllPresent;
     }
 
-
+    // Is the logo present?
     public String findLogo() {
         String imgPath = driver.findElement(logoImage).getAttribute("src");
         return imgPath;
     }
 
+    // Count the numbers of the blog entries
     public int countBlogEntries() {
         int num = 0;
         List<WebElement> list = driver.findElements(blogEntryTitle);
@@ -66,7 +92,7 @@ public class FrontPage extends BasePage {
         return num;
     }
 
-    // NOT USED YET
+    // -------********* NOT USED YET *********-------
     public String[] collectBlogEntryTitles() {
         Actions actions = new Actions(driver);
         WebDriverWait wait = new WebDriverWait(driver, 20);
@@ -84,6 +110,5 @@ public class FrontPage extends BasePage {
 
         return titlesArray;
     }
-
 
 }

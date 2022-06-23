@@ -10,6 +10,11 @@ import java.io.ByteArrayInputStream;
 
 public class TestFrontPage extends TestBase{
 
+    /**************************************************
+     * Tests of this page
+     **************************************************/
+
+    // Check the url of the front page
     @Description("Check the url of the front page")
     @Story("Test the front page")
     @Severity(SeverityLevel.TRIVIAL)
@@ -24,6 +29,7 @@ public class TestFrontPage extends TestBase{
         Assertions.assertEquals(expected, actual);
     }
 
+    // Test allow cookies
     @Description("Allow cookies")
     @Story("Test the front page")
     @Severity(SeverityLevel.NORMAL)
@@ -47,6 +53,7 @@ public class TestFrontPage extends TestBase{
 
     }
 
+    // Find the logo on the main page
     @Description("Find the logo on the main page")
     @Story("Test the front page")
     @Severity(SeverityLevel.NORMAL)
@@ -68,6 +75,7 @@ public class TestFrontPage extends TestBase{
         Assertions.assertEquals(expected, actual);
     }
 
+    // Check the number of the latest blog entries
     @Description("Check the number of the latest blog entries")
     @Story("Test the front page")
     @Severity(SeverityLevel.CRITICAL)
@@ -84,6 +92,7 @@ public class TestFrontPage extends TestBase{
         Assertions.assertEquals(expected, actual);
     }
 
+    // Check the titles of the blog entries
     @Description("Check the titles of the blog entries")
     @Story("Test the front page")
     @Severity(SeverityLevel.CRITICAL)
@@ -100,7 +109,7 @@ public class TestFrontPage extends TestBase{
         Assertions.assertArrayEquals(expected, actual);
     }
 
-
+    // Check all the team photos are present in the carousel
     @Description("Check all the team photos are present in the carousel")
     @Story("Test the front page")
     @Severity(SeverityLevel.CRITICAL)
@@ -113,6 +122,7 @@ public class TestFrontPage extends TestBase{
 
         Assertions.assertTrue(frontPage.isAllImagePresent());
     }
+
 }
 
 

@@ -23,6 +23,17 @@ public class TestData {
     public final static String editorPassword = "JaNeDoE#1";
     public final static String newBlogEntryTitle = "Lorem Ipsum";
 
+    public final static String text = """
+                                ## Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                            
+                                Cras aliquam **ullamcorper** felis non aliquam. Vivamus fermentum porta massa, ultrices vestibulum metus sollicitudin in. Vivamus ultricies porttitor semper. Pellentesque quis orci dolor. Nunc in libero _efficitur_, rutrum nibh in, dictum nibh. Etiam a sollicitudin eros. Nam consectetur pharetra dolor a efficitur. Praesent eu ex vitae _lorem_ egestas eleifend viverra a lectus.
+                                            
+                                1. Pellentesque venenatis
+                                2. Tortor in dolor hendrerit
+                                3. Vel interdum
+                                4. Sapien suscipit
+                                """;
+
     // TestFU14TeamPage
     public final static String name = "FU14";
     public final static String trainer = "Pánczél Zoltán";

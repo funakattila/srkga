@@ -4,16 +4,38 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class UserLoginPage extends BasePage {
 
+    /**************************************************
+     * Web elements of the page
+     **************************************************/
+
+    // The URL of this site
     private final String url = "http://srkgakezilabda.hu/login";
+
+    // Title of the page
     private final By pageTitle = By.tagName("h1");
+
+    // User name field
     private final By userNameField = By.xpath("//input[@name=\"username\"]");
+
+    // Password field
     private final By userPasswordField = By.xpath("//input[@name=\"password\"]");
+
+    // Remember me checkbox
     private final By rememberMeCheckBox = By.xpath("//input[@name=\"rememberme\"]");
+
+    // Forget password link
     private final By forgetLink = By.xpath("//a[@href=\"/forgot_password\"]");
+
+    // Login button
     private final By loginButton = By.xpath("//button[@type=\"submit\"]");
 
-    private final By loginStatus = By.xpath("//*[@class=\"login-status\"]");
 
+    // private final By loginStatus = By.xpath("//*[@class=\"login-status\"]");
+
+
+    /**************************************************
+     * Constructors
+     **************************************************/
 
     public UserLoginPage(WebDriver driver) {
         super(driver);
@@ -22,14 +44,22 @@ public class UserLoginPage extends BasePage {
         super(driver, wait);
     }
 
+
+    /**************************************************
+     * Methods
+     **************************************************/
+
+    // Navigate to the page
     public void navigate() {
         driver.navigate().to(url);
     }
 
+    // Get the title of the page
     public String getPageTitle() {
         return driver.findElement(pageTitle).getText();
     }
 
+    // User login
     public void loginUser(String username, String password, boolean isRememberMe) {
         driver.findElement(userNameField).sendKeys(username);
         driver.findElement(userPasswordField).sendKeys(password);
@@ -39,6 +69,7 @@ public class UserLoginPage extends BasePage {
         driver.findElement(loginButton).click();
     }
 
+    // -------********* NOT USED YET *********-------
     public void forgottenPasswordLink() {
         driver.findElement(forgetLink).click();
     }

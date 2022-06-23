@@ -10,6 +10,11 @@ import java.util.List;
 
 public class TestUserRegister extends TestBase{
 
+    /**************************************************
+     * Tests of this page
+     **************************************************/
+
+    // Navigate to the registration page
     @Description("Navigate to the registration page")
     @Story("Test user registration")
     @Severity(SeverityLevel.TRIVIAL)
@@ -30,6 +35,7 @@ public class TestUserRegister extends TestBase{
         Assertions.assertEquals(expected, actual);
     }
 
+    // Reset all the entered data from the fields
     @Description("Reset all the entered data from the fields")
     @Story("Test user registration")
     @Severity(SeverityLevel.MINOR)
@@ -42,13 +48,14 @@ public class TestUserRegister extends TestBase{
         userRegisterPage.enterUserData("John Doe", "johndoe", "johndoe@foo.bar", "JoHnDoE#1", "JoHnDoE#1");
         Allure.addAttachment("The form filled with data",
                 new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
-        userRegisterPage.pressResetButton();
+        userRegisterPage.clickResetButton();
         Allure.addAttachment("The form after press the reset button",
                 new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
 
-        Assertions.assertTrue(userRegisterPage.isAllFieldEmpty());
+        Assertions.assertTrue(userRegisterPage.areAllFieldsEmpty());
     }
 
+    // Register a new user without full name
     @Description("Register a new user without full name")
     @Story("Test user registration")
     @Severity(SeverityLevel.CRITICAL)
@@ -61,7 +68,7 @@ public class TestUserRegister extends TestBase{
         userRegisterPage.enterUserData("", "johndoe", "johndoe@foo.bar", "JoHnDoE#1", "JoHnDoE#1");
         Allure.addAttachment("The Full Name field is empty",
                 new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
-        userRegisterPage.pressSubmitButton();
+        userRegisterPage.clickSubmitButton();
 
         Allure.addAttachment("Registration failed",
                 new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
@@ -69,7 +76,7 @@ public class TestUserRegister extends TestBase{
         Assertions.assertTrue(userRegisterPage.isOneFieldEmpty());
     }
 
-
+    // Register a new user
     @Description("Register a new user")
     @Story("Test user registration")
     @Severity(SeverityLevel.CRITICAL)
@@ -81,7 +88,7 @@ public class TestUserRegister extends TestBase{
         userRegisterPage.navigate();
         userRegisterPage.clickToAllowCookies();
         userRegisterPage.enterUserData("John Doe", "johndoe", "johndoe@foo.bar", "JoHnDoE#1", "JoHnDoE#1");
-        userRegisterPage.pressSubmitButton();
+        userRegisterPage.clickSubmitButton();
 
         Allure.addAttachment("Screenshot",
                 new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
@@ -97,6 +104,7 @@ public class TestUserRegister extends TestBase{
         Assertions.assertEquals(expected, actual);
     }
 
+    // Register a new users from file
     @Description("Register a new users from file")
     @Story("Test user registration")
     @Severity(SeverityLevel.NORMAL)
@@ -118,11 +126,12 @@ public class TestUserRegister extends TestBase{
             String password2 = user[4];
 
             userRegisterPage.enterUserData(fullname, username, email, password1, password2);
-            userRegisterPage.pressSubmitButton();
+            userRegisterPage.clickSubmitButton();
             Allure.addAttachment("Registration success",
                     new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
 
             userRegisterPage.navigate();
         }
     }
+
 }

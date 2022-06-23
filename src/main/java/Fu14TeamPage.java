@@ -14,6 +14,12 @@ import java.util.Scanner;
 
 public class Fu14TeamPage extends BasePage {
 
+    /**************************************************
+     * Web elements of the page
+     **************************************************/
+
+    // The URL of this page
+
     private final By teamName = By.xpath("//*[@class=\"main-content csapat\"]//h2");
     private final By aboutTeam = By.xpath("//*[@id=\"about-team\"]");
     private final By trainerField = By.xpath("//*[@id=\"trainer\"]//p");
