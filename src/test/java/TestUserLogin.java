@@ -1,39 +1,13 @@
-import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.*;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.*;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.ByteArrayInputStream;
-import java.util.concurrent.TimeUnit;
 
-public class TestUserLogin {
-
-    WebDriver driver;
-
-    @BeforeEach
-    public void setup() {
-        WebDriverManager.chromedriver().setup();
-
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--no-sandbox");
-        options.addArguments("--disable-dev-shm-usage");
-        options.addArguments("--disable-notifications");
-        options.addArguments("--disable-extensions");
-        options.addArguments("--headless");
-        options.addArguments("--window-size=1920,1080");
-        options.addArguments("start-maximized");
-
-        driver = new ChromeDriver(options);
-        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-        driver.manage().window().maximize();
-    }
+public class TestUserLogin extends TestBase{
 
     @Description("Navigate to user login page")
     @Story("Test user login")
@@ -59,13 +33,13 @@ public class TestUserLogin {
     @Severity(SeverityLevel.NORMAL)
     @Test
     public void loginTest(){
-        UserLoginPage userLoginPage = new UserLoginPage(driver);
+        UserLoginPage userLoginPage = new UserLoginPage(driver, wait);
 
         userLoginPage.navigate();
         userLoginPage.clickToAllowCookies();
         userLoginPage.loginUser("johndoe", "JoHnDoE#1", false);
 
-        WebDriverWait wait = new WebDriverWait(driver, 20);
+        wait = new WebDriverWait(driver, 20);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"grav-login\"]/h4/strong")));
         WebElement welcomeMessageName = driver.findElement(By.xpath("//*[@id=\"grav-login\"]/h4/strong"));
 
@@ -87,7 +61,7 @@ public class TestUserLogin {
         userLoginPage.clickToAllowCookies();
         userLoginPage.loginUser("johndoe", "JoHnDoE#1", true);
 
-        WebDriverWait wait = new WebDriverWait(driver, 20);
+        wait = new WebDriverWait(driver, 20);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"grav-login\"]/h4/strong")));
 
         Cookie rememberMe = driver.manage().getCookieNamed("grav-rememberme");
@@ -97,8 +71,4 @@ public class TestUserLogin {
         Assertions.assertTrue(isRememberMe);
     }
 
-    @AfterEach
-    public void close() {
-        driver.close();
-    }
 }

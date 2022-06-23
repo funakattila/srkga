@@ -1,5 +1,6 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class AddNewBlogEntryPage extends BasePage {
 
@@ -47,9 +48,11 @@ public class AddNewBlogEntryPage extends BasePage {
 
     private final By blogTitle = By.xpath("//*[@class=\"list-blog-header\"]/h3/a");
 
-
     public AddNewBlogEntryPage(WebDriver driver) {
         super(driver);
+    }
+    public AddNewBlogEntryPage(WebDriver driver, WebDriverWait wait) {
+        super(driver, wait);
     }
 
     public void navigateAndLogin() {

@@ -1,5 +1,6 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -24,6 +25,10 @@ public class UserRegisterPage extends BasePage {
 
     public UserRegisterPage(WebDriver driver) {
         super(driver);
+    }
+
+    public UserRegisterPage(WebDriver driver, WebDriverWait wait) {
+        super(driver, wait);
     }
 
     public void navigate() {

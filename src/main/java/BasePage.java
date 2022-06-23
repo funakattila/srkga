@@ -7,6 +7,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public abstract class BasePage {
 
     WebDriver driver;
+    WebDriverWait wait;
 
     //Allow cookies popup window
     private final By allowCookiesWindow = By.xpath("//*[@id=\"tecart-cookie-banner\"]");
@@ -16,6 +17,12 @@ public abstract class BasePage {
     public BasePage(WebDriver driver) {
         this.driver = driver;
     }
+
+    public BasePage(WebDriver driver, WebDriverWait wait) {
+        this.driver = driver;
+        this.wait = wait;
+    }
+
 
     public void clickToAllowCookies() {
         WebElement button = driver.findElement(allowCookiesButton);

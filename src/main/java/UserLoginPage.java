@@ -1,5 +1,7 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
 public class UserLoginPage extends BasePage {
 
     private final String url = "http://srkgakezilabda.hu/login";
@@ -15,6 +17,9 @@ public class UserLoginPage extends BasePage {
 
     public UserLoginPage(WebDriver driver) {
         super(driver);
+    }
+    public UserLoginPage(WebDriver driver, WebDriverWait wait) {
+        super(driver, wait);
     }
 
     public void navigate() {

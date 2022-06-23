@@ -1,38 +1,14 @@
-import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.*;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.ByteArrayInputStream;
-import java.util.concurrent.TimeUnit;
 
-public class TestFrontPage {
-    WebDriver driver;
-
-    @BeforeEach
-    public void setup() {
-        WebDriverManager.chromedriver().setup();
-
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--no-sandbox");
-        options.addArguments("--disable-dev-shm-usage");
-        options.addArguments("--disable-notifications");
-        options.addArguments("--disable-extensions");
-        options.addArguments("--headless");
-        options.addArguments("--window-size=1920,1080");
-        options.addArguments("start-maximized");
-
-        driver = new ChromeDriver(options);
-        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-        driver.manage().window().maximize();
-    }
+public class TestFrontPage extends TestBase{
 
     @Description("Check the url of the front page")
     @Story("Test the front page")
@@ -53,8 +29,8 @@ public class TestFrontPage {
     @Severity(SeverityLevel.NORMAL)
     @Test
     public void allowCookies() {
-        FrontPage frontPage = new FrontPage(driver);
-        WebDriverWait wait = new WebDriverWait(driver, 30);
+        FrontPage frontPage = new FrontPage(driver, wait);
+        wait = new WebDriverWait(driver, 30);
 
         frontPage.navigate();
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@aria-label=\"cookieconsent\"]")));
@@ -76,8 +52,8 @@ public class TestFrontPage {
     @Severity(SeverityLevel.NORMAL)
     @Test
     public void findLogo() {
-        FrontPage frontPage = new FrontPage(driver);
-        WebDriverWait wait = new WebDriverWait(driver, 30);
+        FrontPage frontPage = new FrontPage(driver, wait);
+        wait = new WebDriverWait(driver, 30);
 
         frontPage.navigate();
         frontPage.clickToAllowCookies();
@@ -137,13 +113,6 @@ public class TestFrontPage {
 
         Assertions.assertTrue(frontPage.isAllImagePresent());
     }
-
-
-    @AfterEach
-    public void close() {
-        driver.close();
-    }
-
 }
 
 

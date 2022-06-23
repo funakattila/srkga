@@ -1,48 +1,22 @@
-import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.*;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.*;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.ByteArrayInputStream;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
-public class TestUserRegister {
-
-    WebDriver driver;
-
-    @BeforeEach
-    public void setup() {
-        WebDriverManager.chromedriver().setup();
-
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--no-sandbox");
-        options.addArguments("--disable-dev-shm-usage");
-        options.addArguments("--disable-notifications");
-        options.addArguments("--disable-extensions");
-        options.addArguments("--headless");
-        options.addArguments("--window-size=1920,1080");
-        options.addArguments("start-maximized");
-
-        driver = new ChromeDriver(options);
-        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-        driver.manage().window().maximize();
-    }
+public class TestUserRegister extends TestBase{
 
     @Description("Navigate to the registration page")
     @Story("Test user registration")
     @Severity(SeverityLevel.TRIVIAL)
     @Test
     public void openRegisterPageTest() {
-        UserRegisterPage userRegisterPage = new UserRegisterPage(driver);
-        WebDriverWait wait = new WebDriverWait(driver, 30);
+        UserRegisterPage userRegisterPage = new UserRegisterPage(driver, wait);
+        wait = new WebDriverWait(driver, 30);
 
         userRegisterPage.navigate();
         userRegisterPage.clickToAllowCookies();
@@ -101,8 +75,8 @@ public class TestUserRegister {
     @Severity(SeverityLevel.CRITICAL)
     @Test
     public void userRegistrationTest() {
-        UserRegisterPage userRegisterPage = new UserRegisterPage(driver);
-        WebDriverWait wait = new WebDriverWait(driver, 20);
+        UserRegisterPage userRegisterPage = new UserRegisterPage(driver, wait);
+        wait = new WebDriverWait(driver, 20);
 
         userRegisterPage.navigate();
         userRegisterPage.clickToAllowCookies();
@@ -150,15 +124,5 @@ public class TestUserRegister {
 
             userRegisterPage.navigate();
         }
-
-
-
     }
-
-    @AfterEach
-    public void close() {
-        driver.close();
-    }
-
-
 }

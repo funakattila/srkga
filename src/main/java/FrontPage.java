@@ -25,6 +25,11 @@ public class FrontPage extends BasePage {
         super(driver);
     }
 
+    public FrontPage(WebDriver driver, WebDriverWait wait) {
+        super(driver, wait);
+    }
+
+
     public void navigate() {
         driver.navigate().to(url);
     }

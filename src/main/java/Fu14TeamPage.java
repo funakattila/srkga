@@ -26,6 +26,9 @@ public class Fu14TeamPage extends BasePage {
     public Fu14TeamPage(WebDriver driver) {
         super(driver);
     }
+    public Fu14TeamPage(WebDriver driver, WebDriverWait wait) {
+        super(driver, wait);
+    }
 
     public void navigate() {
         driver.navigate().to(url);
