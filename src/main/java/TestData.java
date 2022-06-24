@@ -12,11 +12,11 @@ public class TestData {
 
 
     // TestUserRegister
-    public final static String registerUserPageTitle = "Register";
+    public final static String registerUserPageTitle = "Register User | SRKGA - Kézilabda";
     public final static String registrationSuccessText = "Thank you for registering.";
 
     // TestUserLogin
-    public final static String loginUserPageTitle = "User Login";
+    public final static String loginUserPageTitle = "Login | SRKGA - Kézilabda";
 
     // TestAddNewBlogEntry
     public final static String editorUsername = "janedoe";

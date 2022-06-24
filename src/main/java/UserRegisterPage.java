@@ -66,7 +66,7 @@ public class UserRegisterPage extends BasePage {
 
     // Get the title of the page
     public String getPageTitle() {
-        return driver.findElement(pageTitle).getText();
+        return driver.getTitle();
     }
 
     // Enter the data of the new user
