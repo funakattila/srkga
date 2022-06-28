@@ -15,11 +15,11 @@ public class TestFrontPage extends TestBase{
      **************************************************/
 
     // Check the url of the front page
-    @Description("Check the url of the front page")
+    @Description("Check the url of the front page - TC01")
     @Story("Test the front page")
     @Severity(SeverityLevel.TRIVIAL)
     @Test
-    public void checkSiteURL() {
+    public void checkSiteURLTest() {
         FrontPage frontPage = new FrontPage(driver);
 
         frontPage.navigate();
@@ -29,36 +29,13 @@ public class TestFrontPage extends TestBase{
         Assertions.assertEquals(expected, actual);
     }
 
-    // Test allow cookies
-    @Description("Allow cookies")
-    @Story("Test the front page")
-    @Severity(SeverityLevel.NORMAL)
-    @Test
-    public void allowCookies() {
-        FrontPage frontPage = new FrontPage(driver, wait);
-        wait = new WebDriverWait(driver, 30);
-
-        frontPage.navigate();
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@aria-label=\"cookieconsent\"]")));
-        Allure.addAttachment("Before accept cookies",
-                new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
-
-        frontPage.clickToAllowCookies();
-
-        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@aria-label=\"cookieconsent\"]")));
-        Allure.addAttachment("After accept cookies",
-                new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
-
-        Assertions.assertFalse(frontPage.isCookieBannerVisible());
-
-    }
 
     // Find the logo on the main page
-    @Description("Find the logo on the main page")
+    @Description("Find the logo on the main page - TC02")
     @Story("Test the front page")
     @Severity(SeverityLevel.NORMAL)
     @Test
-    public void findLogo() {
+    public void findLogoTest() {
         FrontPage frontPage = new FrontPage(driver, wait);
         wait = new WebDriverWait(driver, 30);
 
@@ -75,12 +52,13 @@ public class TestFrontPage extends TestBase{
         Assertions.assertEquals(expected, actual);
     }
 
+
     // Check the number of the latest blog entries
-    @Description("Check the number of the latest blog entries")
+    @Description("Check the number of the latest blog entries - TC03")
     @Story("Test the front page")
     @Severity(SeverityLevel.CRITICAL)
     @Test
-    public void numberOfBlogEntries() {
+    public void numberOfBlogEntriesTest() {
         FrontPage frontPage = new FrontPage(driver);
 
         frontPage.navigate();
@@ -92,13 +70,13 @@ public class TestFrontPage extends TestBase{
         Assertions.assertEquals(expected, actual);
     }
 
+
     // Check the titles of the blog entries
-    @Description("Check the titles of the blog entries")
+    @Description("Check the titles of the blog entries - TC04")
     @Story("Test the front page")
     @Severity(SeverityLevel.CRITICAL)
-    @Disabled
     @Test
-    public void checkTitles() {
+    public void checkTitlesTest() {
         FrontPage frontPage = new FrontPage(driver);
         frontPage.navigate();
         frontPage.clickToAllowCookies();
@@ -109,18 +87,54 @@ public class TestFrontPage extends TestBase{
         Assertions.assertArrayEquals(expected, actual);
     }
 
-    // Check all the team photos are present in the carousel
-    @Description("Check all the team photos are present in the carousel")
+
+    // Check the read more button
+    @Description("Check the read more button - TC05")
     @Story("Test the front page")
     @Severity(SeverityLevel.CRITICAL)
     @Test
-    public void isAllImagePresent() {
+    public void isReadMoreWorksTest() {
+
+    }
+
+
+    // Check all the team photos are present in the carousel
+    @Description("Check all the team photos are present in the carousel - TC06")
+    @Story("Test the front page")
+    @Severity(SeverityLevel.CRITICAL)
+    @Test
+    public void isAllImagePresentTest() {
         FrontPage frontPage = new FrontPage(driver);
 
         frontPage.navigate();
         frontPage.clickToAllowCookies();
 
         Assertions.assertTrue(frontPage.isAllImagePresent());
+    }
+
+
+    // Test allow cookies
+    @Description("Allow cookies - TC07")
+    @Story("Test the front page")
+    @Severity(SeverityLevel.NORMAL)
+    @Test
+    public void allowCookiesTest() {
+        FrontPage frontPage = new FrontPage(driver, wait);
+        wait = new WebDriverWait(driver, 30);
+
+        frontPage.navigate();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@aria-label=\"cookieconsent\"]")));
+        Allure.addAttachment("Before accept cookies",
+                new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
+
+        frontPage.clickToAllowCookies();
+
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@aria-label=\"cookieconsent\"]")));
+        Allure.addAttachment("After accept cookies",
+                new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
+
+        Assertions.assertFalse(frontPage.isCookieBannerVisible());
+
     }
 
 }

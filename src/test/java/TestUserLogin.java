@@ -13,8 +13,9 @@ public class TestUserLogin extends TestBase{
      * Tests of this page
      **************************************************/
 
+
     // Navigate to user login page
-    @Description("Navigate to user login page")
+    @Description("Navigate to user login page - TC13")
     @Story("Test user login")
     @Severity(SeverityLevel.TRIVIAL)
     @Test
@@ -33,8 +34,9 @@ public class TestUserLogin extends TestBase{
         Assertions.assertEquals(expected, actual);
     }
 
+
     // Test user login without remember me function
-    @Description("Test user login without remember me function")
+    @Description("Test user login without remember me function - TC14")
     @Story("Test user login")
     @Severity(SeverityLevel.NORMAL)
     @Test
@@ -49,14 +51,15 @@ public class TestUserLogin extends TestBase{
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"grav-login\"]/h4/strong")));
         WebElement welcomeMessageName = driver.findElement(By.xpath("//*[@id=\"grav-login\"]/h4/strong"));
 
-        String expectedName = "John Doe";
-        String actualName = welcomeMessageName.getText();
+        String expected = TestData.userFullName;
+        String actual = welcomeMessageName.getText();
 
-        Assertions.assertEquals(expectedName, actualName);
+        Assertions.assertEquals(expected, actual);
     }
 
+
     // User login to site with remember me function
-    @Description("User login to site with remember me function")
+    @Description("User login to site with remember me function - TC15")
     @Story("Test user login")
     @Severity(SeverityLevel.NORMAL)
     @Test

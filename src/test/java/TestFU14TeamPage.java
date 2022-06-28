@@ -8,6 +8,11 @@ import java.io.ByteArrayInputStream;
 
 public class TestFU14TeamPage extends TestBase{
 
+    /**************************************************
+     * Tests of this page
+     **************************************************/
+
+    // Test FU14 team members
     @Description("Test FU14 team members")
     @Story("Test team page")
     @Severity(SeverityLevel.NORMAL)
@@ -26,6 +31,7 @@ public class TestFU14TeamPage extends TestBase{
         Assertions.assertArrayEquals(expected, actual);
     }
 
+    // Test FU14 team members number
     @Description("Test FU14 team members number")
     @Story("Test team page")
     @Severity(SeverityLevel.NORMAL)
@@ -42,6 +48,7 @@ public class TestFU14TeamPage extends TestBase{
         Assertions.assertEquals(expected, actual);
     }
 
+    // Test FU14 team about us text
     @Description("Test FU14 team about us text")
     @Story("Test team page")
     @Severity(SeverityLevel.NORMAL)
@@ -56,18 +63,5 @@ public class TestFU14TeamPage extends TestBase{
         String actual = fu14TeamPage.getAboutTeamText();
 
         Assertions.assertEquals(expected, actual);
-    }
-
-    @Description("Save FU14 team data to txt")
-    @Story("Test team page")
-    @Severity(SeverityLevel.NORMAL)
-    @Test
-    public void saveToFileTest() {
-        Fu14TeamPage fu14TeamPage = new Fu14TeamPage(driver);
-
-        fu14TeamPage.navigate();
-        fu14TeamPage.clickToAllowCookies();
-        fu14TeamPage.createFile();
-        fu14TeamPage.writeToFile();
     }
 }

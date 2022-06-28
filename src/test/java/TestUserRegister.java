@@ -14,8 +14,9 @@ public class TestUserRegister extends TestBase{
      * Tests of this page
      **************************************************/
 
+
     // Navigate to the registration page
-    @Description("Navigate to the registration page")
+    @Description("Navigate to the registration page - TC08")
     @Story("Test user registration")
     @Severity(SeverityLevel.TRIVIAL)
     @Test
@@ -35,28 +36,9 @@ public class TestUserRegister extends TestBase{
         Assertions.assertEquals(expected, actual);
     }
 
-    // Reset all the entered data from the fields
-    @Description("Reset all the entered data from the fields")
-    @Story("Test user registration")
-    @Severity(SeverityLevel.MINOR)
-    @Test
-    public void resetUserDataTest() {
-        UserRegisterPage userRegisterPage = new UserRegisterPage(driver);
-
-        userRegisterPage.navigate();
-        userRegisterPage.clickToAllowCookies();
-        userRegisterPage.enterUserData("John Doe", "johndoe", "johndoe@foo.bar", "JoHnDoE#1", "JoHnDoE#1");
-        Allure.addAttachment("The form filled with data",
-                new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
-        userRegisterPage.clickResetButton();
-        Allure.addAttachment("The form after press the reset button",
-                new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
-
-        Assertions.assertTrue(userRegisterPage.areAllFieldsEmpty());
-    }
 
     // Register a new user without full name
-    @Description("Register a new user without full name")
+    @Description("Register a new user without full name - TC09")
     @Story("Test user registration")
     @Severity(SeverityLevel.CRITICAL)
     @Test
@@ -76,8 +58,30 @@ public class TestUserRegister extends TestBase{
         Assertions.assertTrue(userRegisterPage.isOneFieldEmpty());
     }
 
+
+    // Reset all the entered data from the fields
+    @Description("Reset all the entered data from the fields - TC10")
+    @Story("Test user registration")
+    @Severity(SeverityLevel.MINOR)
+    @Test
+    public void resetUserDataTest() {
+        UserRegisterPage userRegisterPage = new UserRegisterPage(driver);
+
+        userRegisterPage.navigate();
+        userRegisterPage.clickToAllowCookies();
+        userRegisterPage.enterUserData("John Doe", "johndoe", "johndoe@foo.bar", "JoHnDoE#1", "JoHnDoE#1");
+        Allure.addAttachment("The form filled with data",
+                new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
+        userRegisterPage.clickResetButton();
+        Allure.addAttachment("The form after press the reset button",
+                new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
+
+        Assertions.assertTrue(userRegisterPage.areAllFieldsEmpty());
+    }
+
+
     // Register a new user
-    @Description("Register a new user")
+    @Description("Register a new user - TC11")
     @Story("Test user registration")
     @Severity(SeverityLevel.CRITICAL)
     @Test
@@ -104,8 +108,9 @@ public class TestUserRegister extends TestBase{
         Assertions.assertEquals(expected, actual);
     }
 
+
     // Register a new users from file
-    @Description("Register a new users from file")
+    @Description("Register a new users from file - TC12")
     @Story("Test user registration")
     @Severity(SeverityLevel.NORMAL)
     @Test

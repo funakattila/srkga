@@ -1,5 +1,8 @@
 import org.openqa.selenium.By;
+import org.openqa.selenium.Cookie;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class AddNewBlogEntryPage extends BasePage {
@@ -57,6 +60,9 @@ public class AddNewBlogEntryPage extends BasePage {
     // Choose the type of the page
     private final By itemTemplate = By.xpath("//*[@data-value=\"item\"]");
 
+    // Is page visible?
+    private final By visibleNoButton = By.xpath("//label[@for=\"toggle_visible0\"]");
+
     // Success button
     private final By successButton = By.xpath("//*[@class=\"button success\"]");
 
@@ -65,17 +71,20 @@ public class AddNewBlogEntryPage extends BasePage {
      */
 
     // Content tab button
-    private final By contentTabLink = By.xpath("//*[@class=\"tabs-nav\"]/a[1]");
+    private final By contentTabLink = By.xpath("//*[@data-scope=\"data.content\"]");
 
     // The text field
     private final By blogText = By.xpath("//pre[@role=\"presentation\"]/span/span");
 
-
     //options tab
-    private final By optionsTabLink = By.xpath("//*[@class=\"tabs-nav\"]/a[2]");
+    private final By optionsTabLink = By.xpath("//*[@data-scope=\"data.options\"]");
 
-    // Change content to unpublished
-    //private final By unpublishedButton = By.xpath("//*[@for=\"toggle_header.published0\"]");
+    // Change content to published
+    private final By publishedButton = By.xpath("//label[@for=\"toggle_header.published1\"]");
+
+    // Taxonomy
+    private final By taxonomyCategoryField = By.xpath("//*[@id=\"tab-flex-pages-2bae5fe879569fad82c846f2d3a3b83d2" +
+            "\"]/div/div[2]/div[1]/div[2]/div/div/div[1]/input");
 
     // Save button
     private final By saveContentButton = By.xpath("//button[@type=\"submit\"]");
@@ -109,8 +118,9 @@ public class AddNewBlogEntryPage extends BasePage {
 
     // Create new blog entry
     public void createBlogEntry(String title) {
-        navigateAndLogin();
+        Actions action = new Actions(driver);
 
+        navigateAndLogin();
         driver.findElement(addButton).click();
         driver.findElement(titleField).sendKeys(title);
         driver.findElement(route).click();
@@ -118,16 +128,21 @@ public class AddNewBlogEntryPage extends BasePage {
         driver.findElement(continueButton).click();
         driver.findElement(dropdownList).click();
         driver.findElement(itemTemplate).click();
+        action.moveToElement(driver.findElement(visibleNoButton)).click().build().perform();
+        //driver.findElement(visibleNoButton).click();
         driver.findElement(successButton).click();
+        driver.findElement(contentTabLink).click();
         driver.findElement(blogText).sendKeys(TestData.text);
         driver.findElement(optionsTabLink).click();
-        //driver.findElement(unpublishedButton).click();
-        driver.findElement(saveContentButton).click();
+        driver.findElement(publishedButton).click();
+        driver.findElement(taxonomyCategoryField).sendKeys("blog", Keys.TAB);
+        action.moveToElement(driver.findElement(saveContentButton)).click().build().perform();
+        //driver.findElement(saveContentButton).click();
     }
 
     // Get the title of the new entry
     public String getNewBlogEntryTitle() {
-        return driver.findElement(blogTitle).getText();
+        return driver.getTitle();
     }
 
 }
