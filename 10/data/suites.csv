@@ -1,5 +1,0 @@
-"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
-"passed","Sat Jun 04 19:30:48 GMT 2022","Sat Jun 04 19:30:54 GMT 2022","5950","","TestUserRegister","","TestUserRegister","userRegistrationResetDataTest","userRegistrationResetDataTest()",""
-"passed","Sat Jun 04 19:30:46 GMT 2022","Sat Jun 04 19:30:48 GMT 2022","2423","","TestUserRegister","","TestUserRegister","navigateToRegistrationPage","navigateToRegistrationPage()",""
-"passed","Sat Jun 04 19:30:54 GMT 2022","Sat Jun 04 19:31:06 GMT 2022","11655","","TestOpenFrontPage","","TestOpenFrontPage","openSiteTest","openSiteTest()",""
-"broken","Sat Jun 04 19:30:19 GMT 2022","Sat Jun 04 19:30:46 GMT 2022","27074","","TestUserRegister","","TestUserRegister","userRegistrationTest","userRegistrationTest()",""
