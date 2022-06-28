@@ -5,7 +5,7 @@ import io.qameta.allure.Story;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class BlogsPageTest extends TestBase {
+public class TestBlogsPage extends TestBase {
 
     /**************************************************
      * Tests of this page
