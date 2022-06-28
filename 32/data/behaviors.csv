@@ -1,0 +1,8 @@
+"Epic","Feature","Story","FAILED","BROKEN","PASSED","SKIPPED","UNKNOWN"
+"","","Edit blog entry","0","2","2","0","0"
+"","","Create blog entry","0","0","2","0","0"
+"","","Test team page","0","0","3","0","0"
+"","","Test the front page","1","1","5","0","0"
+"","","Test user login","0","0","3","0","0"
+"","","Test user registration","0","1","4","0","0"
+"","","Test the blog entries","2","0","0","0","0"
