@@ -8,7 +8,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.io.ByteArrayInputStream;
 import java.util.List;
 
-public class TestUserRegister extends TestBase{
+public class TestUserRegister extends BaseTest {
 
     /**************************************************
      * Tests of this page

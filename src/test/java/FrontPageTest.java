@@ -8,18 +8,19 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.ByteArrayInputStream;
 
-public class TestFrontPage extends TestBase{
+public class FrontPageTest extends BaseTest {
 
     /**************************************************
      * Tests of this page
      **************************************************/
 
-    // Check the url of the front page
-    @Description("Check the url of the front page - TC01")
-    @Story("Test the front page")
+    @Epic("Regression tests")
+    @Feature("Test the front page of the site")
+    @Story("Check the url of the front page")
+    @Description("Test Case 01")
     @Severity(SeverityLevel.TRIVIAL)
     @Test
-    public void checkSiteURLTest() {
+    public void TestSiteURL() {
         FrontPage frontPage = new FrontPage(driver);
 
         frontPage.navigate();
@@ -30,9 +31,10 @@ public class TestFrontPage extends TestBase{
     }
 
 
-    // Find the logo on the main page
-    @Description("Find the logo on the main page - TC02")
-    @Story("Test the front page")
+    @Epic("Regression tests")
+    @Feature("Test the front page of the site")
+    @Story("Find the logo on the main page")
+    @Description("Test Case 02")
     @Severity(SeverityLevel.NORMAL)
     @Test
     public void findLogoTest() {
@@ -53,9 +55,10 @@ public class TestFrontPage extends TestBase{
     }
 
 
-    // Check the number of the latest blog entries
-    @Description("Check the number of the latest blog entries - TC03")
-    @Story("Test the front page")
+    @Epic("Regression tests")
+    @Feature("Test the front page of the site")
+    @Story("Check the number of the latest blog entries")
+    @Description("Test Case 03")
     @Severity(SeverityLevel.CRITICAL)
     @Test
     public void numberOfBlogEntriesTest() {
@@ -71,9 +74,10 @@ public class TestFrontPage extends TestBase{
     }
 
 
-    // Check the titles of the blog entries
-    @Description("Check the titles of the blog entries - TC04")
-    @Story("Test the front page")
+    @Epic("Regression tests")
+    @Feature("Test the front page of the site")
+    @Story("Check the titles of the blog entries")
+    @Description("Test Case 04")
     @Severity(SeverityLevel.CRITICAL)
     @Test
     public void checkTitlesTest() {
@@ -89,8 +93,10 @@ public class TestFrontPage extends TestBase{
 
 
     // Check the read more button
-    @Description("Check the read more button - TC05")
-    @Story("Test the front page")
+    @Epic("Regression tests")
+    @Feature("Test the front page of the site")
+    @Story("Check the read more button")
+    @Description("Test Case 05")
     @Severity(SeverityLevel.CRITICAL)
     @Test
     public void isReadMoreWorksTest() {
@@ -98,9 +104,10 @@ public class TestFrontPage extends TestBase{
     }
 
 
-    // Check all the team photos are present in the carousel
-    @Description("Check all the team photos are present in the carousel - TC06")
-    @Story("Test the front page")
+    @Epic("Regression tests")
+    @Feature("Test the front page of the site")
+    @Story("Check all the team photos are present in the carousel")
+    @Description("Test Case 06")
     @Severity(SeverityLevel.CRITICAL)
     @Test
     public void isAllImagePresentTest() {
@@ -114,8 +121,10 @@ public class TestFrontPage extends TestBase{
 
 
     // Test allow cookies
-    @Description("Allow cookies - TC07")
-    @Story("Test the front page")
+    @Epic("Regression tests")
+    @Feature("Test the front page of the site")
+    @Story("Allow cookies")
+    @Description("Test Case 07")
     @Severity(SeverityLevel.NORMAL)
     @Test
     public void allowCookiesTest() {

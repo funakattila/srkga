@@ -1,3 +1,4 @@
+import io.qameta.allure.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -54,6 +55,7 @@ public class FrontPage extends BasePage {
      **************************************************/
 
     // Navigate to the page
+    @Step("Navigate to the page front page - {frontpage.url}")
     public void navigate() {
         driver.navigate().to(url);
     }
@@ -82,7 +84,7 @@ public class FrontPage extends BasePage {
         return imgPath;
     }
 
-    // Count the numbers of the blog entries
+    // Count the numbers of the blog entries on the front page
     public int countBlogEntries() {
         int num = 0;
         List<WebElement> list = driver.findElements(blogEntryTitle);

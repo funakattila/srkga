@@ -1,3 +1,4 @@
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -40,6 +41,7 @@ public abstract class BasePage {
      **************************************************/
 
     // Click the button to allow the cookies method
+    @Step("Click the button to allow the cookies method")
     public void clickToAllowCookies() {
         WebElement button = driver.findElement(allowCookiesButton);
 

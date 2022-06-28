@@ -7,7 +7,7 @@ import org.openqa.selenium.TakesScreenshot;
 import java.io.ByteArrayInputStream;
 
 
-public class TestAddNewBlogEntry extends TestBase{
+public class TestAddNewBlogEntry extends BaseTest {
 
     /**************************************************
      * Tests of this page

@@ -6,7 +6,7 @@ import org.openqa.selenium.TakesScreenshot;
 
 import java.io.ByteArrayInputStream;
 
-public class TestFU14TeamPage extends TestBase{
+public class TestFU14TeamPage extends BaseTest {
 
     /**************************************************
      * Tests of this page

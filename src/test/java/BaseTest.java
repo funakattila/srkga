@@ -8,7 +8,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.concurrent.TimeUnit;
 
-public class TestBase {
+public class BaseTest {
     protected WebDriver driver;
     protected WebDriverWait wait;
 
