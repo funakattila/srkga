@@ -8,19 +8,22 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.io.ByteArrayInputStream;
 import java.util.List;
 
-public class TestUserRegister extends BaseTest {
+
+@Epic("Regression tests")
+@Feature("Test the user registration")
+@Link("https://docs.google.com/spreadsheets/d/17usWINlHQc322-yzI4dsEL2Y6qsqkedloQqOz0GRvz8/edit?usp=sharing")
+public class UserRegisterTest extends BaseTest {
 
     /**************************************************
      * Tests of this page
      **************************************************/
 
 
-    // Navigate to the registration page
-    @Description("Navigate to the registration page - TC08")
-    @Story("Test user registration")
-    @Severity(SeverityLevel.TRIVIAL)
     @Test
-    public void openRegisterPageTest() {
+    @Story("Navigate to the registration page")
+    @Description("Test Case 08")
+    @Severity(SeverityLevel.TRIVIAL)
+    public void TestOpenRegisterPage() {
         UserRegisterPage userRegisterPage = new UserRegisterPage(driver, wait);
         wait = new WebDriverWait(driver, 30);
 
@@ -36,13 +39,11 @@ public class TestUserRegister extends BaseTest {
         Assertions.assertEquals(expected, actual);
     }
 
-
-    // Register a new user without full name
-    @Description("Register a new user without full name - TC09")
-    @Story("Test user registration")
-    @Severity(SeverityLevel.CRITICAL)
     @Test
-    public void userRegistrationWithoutFullNameTest() {
+    @Story("Register a new user without full name")
+    @Description("Test Case 09")
+    @Severity(SeverityLevel.CRITICAL)
+    public void TestUserRegistrationWithoutFullName() {
         UserRegisterPage userRegisterPage = new UserRegisterPage(driver);
 
         userRegisterPage.navigate();
@@ -58,13 +59,11 @@ public class TestUserRegister extends BaseTest {
         Assertions.assertTrue(userRegisterPage.isOneFieldEmpty());
     }
 
-
-    // Reset all the entered data from the fields
-    @Description("Reset all the entered data from the fields - TC10")
-    @Story("Test user registration")
-    @Severity(SeverityLevel.MINOR)
     @Test
-    public void resetUserDataTest() {
+    @Story("Reset all the entered data from the fields")
+    @Description("Test Case 10")
+    @Severity(SeverityLevel.MINOR)
+    public void TestResetUserData() {
         UserRegisterPage userRegisterPage = new UserRegisterPage(driver);
 
         userRegisterPage.navigate();
@@ -79,13 +78,11 @@ public class TestUserRegister extends BaseTest {
         Assertions.assertTrue(userRegisterPage.areAllFieldsEmpty());
     }
 
-
-    // Register a new user
-    @Description("Register a new user - TC11")
-    @Story("Test user registration")
-    @Severity(SeverityLevel.CRITICAL)
     @Test
-    public void userRegistrationTest() {
+    @Story("Register a new user")
+    @Description("Test Case 11")
+    @Severity(SeverityLevel.CRITICAL)
+    public void TestUserRegistration() {
         UserRegisterPage userRegisterPage = new UserRegisterPage(driver, wait);
         wait = new WebDriverWait(driver, 20);
 
@@ -108,13 +105,11 @@ public class TestUserRegister extends BaseTest {
         Assertions.assertEquals(expected, actual);
     }
 
-
-    // Register a new users from file
-    @Description("Register a new users from file - TC12")
-    @Story("Test user registration")
-    @Severity(SeverityLevel.NORMAL)
     @Test
-    public void userRegistrationFromFileTest() {
+    @Story("Register a new users from file")
+    @Description("Test Case 12")
+    @Severity(SeverityLevel.NORMAL)
+    public void TestUserRegistrationFromFile() {
         UserRegisterPage userRegisterPage = new UserRegisterPage(driver);
 
         userRegisterPage.navigate();

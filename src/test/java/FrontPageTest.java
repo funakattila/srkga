@@ -8,18 +8,19 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.ByteArrayInputStream;
 
+@Epic("Regression tests")
+@Feature("Test the front page of the site")
+@Link("https://docs.google.com/spreadsheets/d/17usWINlHQc322-yzI4dsEL2Y6qsqkedloQqOz0GRvz8/edit?usp=sharing")
 public class FrontPageTest extends BaseTest {
 
     /**************************************************
      * Tests of this page
      **************************************************/
 
-    @Epic("Regression tests")
-    @Feature("Test the front page of the site")
+    @Test
     @Story("Check the url of the front page")
     @Description("Test Case 01")
     @Severity(SeverityLevel.TRIVIAL)
-    @Test
     public void TestSiteURL() {
         FrontPage frontPage = new FrontPage(driver);
 
@@ -30,14 +31,11 @@ public class FrontPageTest extends BaseTest {
         Assertions.assertEquals(expected, actual);
     }
 
-
-    @Epic("Regression tests")
-    @Feature("Test the front page of the site")
+    @Test
     @Story("Find the logo on the main page")
     @Description("Test Case 02")
     @Severity(SeverityLevel.NORMAL)
-    @Test
-    public void findLogoTest() {
+    public void TestFindLogo() {
         FrontPage frontPage = new FrontPage(driver, wait);
         wait = new WebDriverWait(driver, 30);
 
@@ -54,14 +52,11 @@ public class FrontPageTest extends BaseTest {
         Assertions.assertEquals(expected, actual);
     }
 
-
-    @Epic("Regression tests")
-    @Feature("Test the front page of the site")
+    @Test
     @Story("Check the number of the latest blog entries")
     @Description("Test Case 03")
     @Severity(SeverityLevel.CRITICAL)
-    @Test
-    public void numberOfBlogEntriesTest() {
+    public void TestNumberOfBlogEntries() {
         FrontPage frontPage = new FrontPage(driver);
 
         frontPage.navigate();
@@ -73,14 +68,11 @@ public class FrontPageTest extends BaseTest {
         Assertions.assertEquals(expected, actual);
     }
 
-
-    @Epic("Regression tests")
-    @Feature("Test the front page of the site")
+    @Test
     @Story("Check the titles of the blog entries")
     @Description("Test Case 04")
     @Severity(SeverityLevel.CRITICAL)
-    @Test
-    public void checkTitlesTest() {
+    public void TestTitles() {
         FrontPage frontPage = new FrontPage(driver);
         frontPage.navigate();
         frontPage.clickToAllowCookies();
@@ -91,26 +83,20 @@ public class FrontPageTest extends BaseTest {
         Assertions.assertArrayEquals(expected, actual);
     }
 
-
-    // Check the read more button
-    @Epic("Regression tests")
-    @Feature("Test the front page of the site")
+    @Disabled
+    @Test
     @Story("Check the read more button")
     @Description("Test Case 05")
     @Severity(SeverityLevel.CRITICAL)
-    @Test
-    public void isReadMoreWorksTest() {
+    public void TestIsReadMoreWorks() {
 
     }
 
-
-    @Epic("Regression tests")
-    @Feature("Test the front page of the site")
+    @Test
     @Story("Check all the team photos are present in the carousel")
     @Description("Test Case 06")
     @Severity(SeverityLevel.CRITICAL)
-    @Test
-    public void isAllImagePresentTest() {
+    public void TestIsAllImagePresent() {
         FrontPage frontPage = new FrontPage(driver);
 
         frontPage.navigate();
@@ -119,15 +105,11 @@ public class FrontPageTest extends BaseTest {
         Assertions.assertTrue(frontPage.isAllImagePresent());
     }
 
-
-    // Test allow cookies
-    @Epic("Regression tests")
-    @Feature("Test the front page of the site")
+    @Test
     @Story("Allow cookies")
     @Description("Test Case 07")
     @Severity(SeverityLevel.NORMAL)
-    @Test
-    public void allowCookiesTest() {
+    public void TestAllowCookies() {
         FrontPage frontPage = new FrontPage(driver, wait);
         wait = new WebDriverWait(driver, 30);
 

@@ -1,3 +1,4 @@
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -59,17 +60,18 @@ public class UserRegisterPage extends BasePage {
      * Methods
      **************************************************/
 
-    // Navigate to the page
+
+    @Step("Navigate to the user register page - {url}")
     public void navigate() {
         driver.navigate().to(url);
     }
 
-    // Get the title of the page
+    @Step("Get the title of the page")
     public String getPageTitle() {
         return driver.getTitle();
     }
 
-    // Enter the data of the new user
+    @Step("Enter the data of the new user - username: {0}, email: {1}, password: {2}")
     public void enterUserData(String fullName, String username, String email, String password1, String password2) {
         driver.findElement(fullNameField).sendKeys(fullName);
         driver.findElement(userNameField).sendKeys(username);
@@ -78,7 +80,7 @@ public class UserRegisterPage extends BasePage {
         driver.findElement(password2Field).sendKeys(password2);
     }
 
-    // Check are all the fields empty
+    @Step("Check are all the fields empty")
     public boolean areAllFieldsEmpty() {
         String fullName = driver.findElement(fullNameField).getText();
         String userName = driver.findElement(userNameField).getText();
@@ -94,7 +96,7 @@ public class UserRegisterPage extends BasePage {
         return false;
     }
 
-    // Check is there an empty field
+    @Step("Check is there an empty field")
     public boolean isOneFieldEmpty() {
         String fullName = driver.findElement(fullNameField).getText();
         String userName = driver.findElement(userNameField).getText();
@@ -110,7 +112,7 @@ public class UserRegisterPage extends BasePage {
         return false;
     }
 
-    // Create new users from a txt file
+    @Step("Create new users from a txt file: {file}")
     public List<String[]> addUsersFromFile(String file) {
         List<String[]> users = new ArrayList<String[]>();
 
@@ -132,12 +134,12 @@ public class UserRegisterPage extends BasePage {
         return users;
     }
 
-    // Click the reset button to clear the form
+    @Step("Click the reset button to clear the form")
     public void clickResetButton() {
         driver.findElement(resetButton).click();
     }
 
-    //Click submit button to send form
+    @Step("Click submit button to send form")
     public void clickSubmitButton() {
         driver.findElement(submitButton).click();
     }

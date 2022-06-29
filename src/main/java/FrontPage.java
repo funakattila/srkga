@@ -1,4 +1,4 @@
-import io.qameta.allure.*;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -54,13 +54,12 @@ public class FrontPage extends BasePage {
      * Methods
      **************************************************/
 
-    // Navigate to the page
-    @Step("Navigate to the page front page - {frontpage.url}")
+    @Step("Navigate to the page front page - {url}")
     public void navigate() {
         driver.navigate().to(url);
     }
 
-    // Inspection of the visibility of the cookie banner
+    @Step("Inspection of the visibility of the cookie banner")
     public boolean isCookieBannerVisible() {
         String style = driver.findElement(allowCookiesBox).getAttribute("style");
         if (style.equals("display: none;")) {
@@ -70,7 +69,7 @@ public class FrontPage extends BasePage {
         return true;
     }
 
-    // Are all the carousel images present?
+    @Step("Check all the carousel images are present")
     public boolean isAllImagePresent() {
         int carouselNum = driver.findElements(carouselItem).size();
         int carouselImg = driver.findElements(carouselImage).size();
@@ -78,13 +77,13 @@ public class FrontPage extends BasePage {
         return isAllPresent;
     }
 
-    // Is the logo present?
+    @Step("Check the logo is present")
     public String findLogo() {
         String imgPath = driver.findElement(logoImage).getAttribute("src");
         return imgPath;
     }
 
-    // Count the numbers of the blog entries on the front page
+    @Step("Count the numbers of the blog entries on the front page")
     public int countBlogEntries() {
         int num = 0;
         List<WebElement> list = driver.findElements(blogEntryTitle);
