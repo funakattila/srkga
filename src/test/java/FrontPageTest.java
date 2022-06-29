@@ -3,6 +3,7 @@ import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -10,7 +11,6 @@ import java.io.ByteArrayInputStream;
 
 @Epic("Regression tests")
 @Feature("Test the front page of the site")
-@Link("https://docs.google.com/spreadsheets/d/17usWINlHQc322-yzI4dsEL2Y6qsqkedloQqOz0GRvz8/edit?usp=sharing")
 public class FrontPageTest extends BaseTest {
 
     /**************************************************
@@ -25,6 +25,8 @@ public class FrontPageTest extends BaseTest {
         FrontPage frontPage = new FrontPage(driver);
 
         frontPage.navigate();
+        Allure.addAttachment("Open the front page",
+                new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
 
         String expected = TestData.mainURL;
         String actual = driver.getCurrentUrl();
@@ -42,12 +44,12 @@ public class FrontPageTest extends BaseTest {
         frontPage.navigate();
         frontPage.clickToAllowCookies();
 
-        String expected = TestData.logoPath;
-        String actual = frontPage.findLogo();
-
         wait.until(ExpectedConditions.visibilityOfElementLocated((By.id("logo"))));
         Allure.addAttachment("The logo on the main page",
                 new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
+
+        String expected = TestData.logoPath;
+        String actual = frontPage.findLogo();
 
         Assertions.assertEquals(expected, actual);
     }
@@ -58,9 +60,13 @@ public class FrontPageTest extends BaseTest {
     @Severity(SeverityLevel.CRITICAL)
     public void TestNumberOfBlogEntries() {
         FrontPage frontPage = new FrontPage(driver);
+        Actions action = new Actions(driver);
 
         frontPage.navigate();
         frontPage.clickToAllowCookies();
+        action.moveToElement(driver.findElement(By.xpath("//*[@class=\"card\"]//h3"))).build().perform();
+        Allure.addAttachment("Latest blog entries",
+                new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
 
         int expected = TestData.numberOfBlogEntries;
         int actual = frontPage.countBlogEntries();
@@ -74,8 +80,13 @@ public class FrontPageTest extends BaseTest {
     @Severity(SeverityLevel.CRITICAL)
     public void TestTitles() {
         FrontPage frontPage = new FrontPage(driver);
+        Actions action = new Actions(driver);
+
         frontPage.navigate();
         frontPage.clickToAllowCookies();
+        action.moveToElement(driver.findElement(By.xpath("//*[@class=\"card\"]//h3"))).build().perform();
+        Allure.addAttachment("Latest blog entries",
+                new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
 
         String[] expected = TestData.latestBlogEntryTitles;
         String[] actual = frontPage.collectBlogEntryTitles();
@@ -83,13 +94,13 @@ public class FrontPageTest extends BaseTest {
         Assertions.assertArrayEquals(expected, actual);
     }
 
-    @Disabled
     @Test
+    @Disabled
     @Story("Check the read more button")
     @Description("Test Case 05")
     @Severity(SeverityLevel.CRITICAL)
     public void TestIsReadMoreWorks() {
-
+        // Not created yet
     }
 
     @Test
@@ -111,23 +122,14 @@ public class FrontPageTest extends BaseTest {
     @Severity(SeverityLevel.NORMAL)
     public void TestAllowCookies() {
         FrontPage frontPage = new FrontPage(driver, wait);
-        wait = new WebDriverWait(driver, 30);
 
         frontPage.navigate();
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@aria-label=\"cookieconsent\"]")));
-        Allure.addAttachment("Before accept cookies",
-                new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
-
         frontPage.clickToAllowCookies();
-
-        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@aria-label=\"cookieconsent\"]")));
         Allure.addAttachment("After accept cookies",
                 new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
 
         Assertions.assertFalse(frontPage.isCookieBannerVisible());
-
     }
-
 }
 
 

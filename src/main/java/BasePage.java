@@ -40,7 +40,6 @@ public abstract class BasePage {
      * Methods
      **************************************************/
 
-    // Click the button to allow the cookies method
     @Step("Click the button to allow the cookies method")
     public void clickToAllowCookies() {
         WebElement button = driver.findElement(allowCookiesButton);

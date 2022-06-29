@@ -1,10 +1,14 @@
 import io.qameta.allure.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+
+import java.io.ByteArrayInputStream;
+import java.io.File;
 
 @Epic("Regression tests")
 @Feature("Test edit blog entry")
-@Link("https://docs.google.com/spreadsheets/d/17usWINlHQc322-yzI4dsEL2Y6qsqkedloQqOz0GRvz8/edit?usp=sharing")
 public class EditBlogEntryPageTest extends BaseTest {
 
     /**************************************************
@@ -19,8 +23,12 @@ public class EditBlogEntryPageTest extends BaseTest {
     public void TestChangeBlogTitle() {
         EditBlogEntryPage editBlogEntryPage = new EditBlogEntryPage(driver);
 
-        editBlogEntryPage.navigateAndLogin();
+        editBlogEntryPage.navigateAdminLoginPage();
+        editBlogEntryPage.adminLogin(TestData.editorUsername, TestData.editorPassword);
         editBlogEntryPage.changeTheTitle(TestData.newTitle);
+        Allure.addAttachment("Change title",
+                new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
+        editBlogEntryPage.successChange();
 
         String text1 = editBlogEntryPage.headerText();
         String text2 = TestData.newTitle;
@@ -41,7 +49,8 @@ public class EditBlogEntryPageTest extends BaseTest {
         editBlogEntryPage.createFile();
         editBlogEntryPage.saveToFile();
 
-        //Assertions
+        File fileCreated = new File(TestData.saveBlogEntryFilePath);
+        Assertions.assertTrue(fileCreated.exists());
     }
 
     @Test
@@ -51,10 +60,16 @@ public class EditBlogEntryPageTest extends BaseTest {
     public void TestDeleteBlogEntry() {
         EditBlogEntryPage editBlogEntryPage = new EditBlogEntryPage(driver);
 
-        editBlogEntryPage.navigateAndLogin();
+        editBlogEntryPage.navigateAdminLoginPage();
+        editBlogEntryPage.adminLogin(TestData.editorUsername, TestData.editorPassword);
         editBlogEntryPage.deleteBlogEntry();
 
-        //Assertions
+        editBlogEntryPage.navigate();
+        Allure.addAttachment("Page not found",
+                new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
+        String pageTitle = editBlogEntryPage.getPageTitle();
+
+        Assertions.assertTrue(pageTitle.contains("Page not Found"));
     }
 
     @Test
@@ -64,14 +79,18 @@ public class EditBlogEntryPageTest extends BaseTest {
     public void TestLogOutEditorUser() {
         EditBlogEntryPage editBlogEntryPage = new EditBlogEntryPage(driver, wait);
 
-        editBlogEntryPage.navigateAndLogin();
+        editBlogEntryPage.navigateAdminLoginPage();
+        editBlogEntryPage.adminLogin(TestData.editorUsername, TestData.editorPassword);
+        Allure.addAttachment("Editor logged in",
+                new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
         editBlogEntryPage.logOutEditor();
+        Allure.addAttachment("Editor logged out",
+                new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
 
         String expected = TestData.logOutMeassageText;
         String actual = driver.findElement(TestData.logOutMessageBox).getText();
 
         Assertions.assertEquals(expected, actual);
     }
-
 
 }

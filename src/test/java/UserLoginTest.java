@@ -51,6 +51,9 @@ public class UserLoginTest extends BaseTest {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"grav-login\"]/h4/strong")));
         WebElement welcomeMessageName = driver.findElement(By.xpath("//*[@id=\"grav-login\"]/h4/strong"));
 
+        Allure.addAttachment("The user logged in",
+                new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
+
         String expected = TestData.userFullName;
         String actual = welcomeMessageName.getText();
 

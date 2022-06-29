@@ -94,7 +94,7 @@ public class Fu14TeamPage extends BasePage {
         return returnText + "\n";
     }
 
-    @Story("ead text from file")
+    @Story("Read text from file")
     public String readFileAboutTeam(String fileName) {
         String returnText = "";
         try {

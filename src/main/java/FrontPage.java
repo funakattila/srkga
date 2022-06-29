@@ -65,7 +65,6 @@ public class FrontPage extends BasePage {
         if (style.equals("display: none;")) {
             return false;
         }
-
         return true;
     }
 
@@ -93,7 +92,6 @@ public class FrontPage extends BasePage {
         return num;
     }
 
-    // -------********* NOT USED YET *********-------
     public String[] collectBlogEntryTitles() {
         Actions actions = new Actions(driver);
         WebDriverWait wait = new WebDriverWait(driver, 20);
@@ -111,5 +109,6 @@ public class FrontPage extends BasePage {
 
         return titlesArray;
     }
+
 
 }

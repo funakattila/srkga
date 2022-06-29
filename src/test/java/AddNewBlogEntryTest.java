@@ -51,13 +51,19 @@ public class AddNewBlogEntryTest extends BaseTest {
         Allure.addAttachment("After login",
                 new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
 
-        addNewBlogEntryPage.createBlogEntryPage(TestData.newBlogEntryTitle);
-        Allure.addAttachment("Create page",
+        addNewBlogEntryPage.clickAddButton();
+        addNewBlogEntryPage.addTitle(TestData.newBlogEntryTitle);
+        addNewBlogEntryPage.setRoute();
+        addNewBlogEntryPage.selectPageType();
+        addNewBlogEntryPage.setContentInvisible();
+        Allure.addAttachment("Set page properties",
                 new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
-
-        addNewBlogEntryPage.createBlogEntryContent(TestData.text);
+        addNewBlogEntryPage.successButton();
+        addNewBlogEntryPage.addBlogEntryContent(TestData.text);
         Allure.addAttachment("Add content",
                 new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
+        addNewBlogEntryPage.setOptionsOfBlogEntryContent();
+        addNewBlogEntryPage.saveBlogEntryContent();
 
         driver.navigate().to(TestData.newBlogEntryURL);
         Allure.addAttachment("New blog entry",

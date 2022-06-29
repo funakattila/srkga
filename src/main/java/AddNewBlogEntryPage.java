@@ -122,32 +122,62 @@ public class AddNewBlogEntryPage extends BasePage {
         driver.findElement(loginButton).click();
     }
 
-    @Story("Create new blog entry page")
-    public void createBlogEntryPage(String title) {
-        Actions action = new Actions(driver);
-
+    @Story("Click add button")
+    public void clickAddButton() {
         driver.findElement(addButton).click();
+    }
+
+    @Story("Add title")
+    public void addTitle(String title) {
         driver.findElement(titleField).sendKeys(title);
+    }
+
+    @Story("Set route")
+    public void setRoute() {
         driver.findElement(route).click();
         driver.findElement(setRouteToBlog).click();
         driver.findElement(continueButton).click();
+    }
+
+    @Story("Select page type")
+    public void selectPageType() {
         driver.findElement(dropdownList).click();
         driver.findElement(itemTemplate).click();
+    }
+
+    @Story("Set Content invisible")
+    public void setContentInvisible() {
+        Actions action = new Actions(driver);
         action.moveToElement(driver.findElement(visibleNoButton)).click().build().perform();
+    }
+
+    @Story("Press success button")
+    public void successButton() {
         driver.findElement(successButton).click();
     }
 
-    @Story("Create new blog entry content")
-    public void createBlogEntryContent(String text) {
-        Actions action = new Actions(driver);
-
+    @Story("Add new blog entry content")
+    public void addBlogEntryContent(String text) {
         driver.findElement(contentTabLink).click();
         driver.findElement(blogText).sendKeys(text);
+    }
+
+    @Story("Set options of blog entry content")
+    public void setOptionsOfBlogEntryContent() {
+        Actions action = new Actions(driver);
+
         driver.findElement(optionsTabLink).click();
         driver.findElement(publishedButton).click();
         driver.findElement(taxonomyCategoryField).sendKeys("blog", Keys.TAB);
+    }
+
+    @Story("Save blog entry content")
+    public void saveBlogEntryContent() {
+        Actions action = new Actions(driver);
+
         action.moveToElement(driver.findElement(saveContentButton)).click().build().perform();
     }
+
 
     @Story("Get the title of the new entry")
     public String getNewBlogEntryTitle() {

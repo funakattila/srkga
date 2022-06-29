@@ -77,11 +77,15 @@ public class EditBlogEntryPage extends BasePage {
         driver.navigate().to(urlPublic);
     }
 
-    @Story("Navigate to the admin login page and login")
-    public void navigateAndLogin() {
+    @Story("Navigate to the admin login page")
+    public void navigateAdminLoginPage() {
         driver.navigate().to(url);
-        driver.findElement(userNameField).sendKeys(TestData.editorUsername);
-        driver.findElement(passwordField).sendKeys(TestData.editorPassword);
+    }
+
+    @Story("Admin login")
+    public void adminLogin(String username, String password) {
+        driver.findElement(userNameField).sendKeys(username);
+        driver.findElement(passwordField).sendKeys(password);
         driver.findElement(loginButton).click();
     }
 
@@ -89,6 +93,11 @@ public class EditBlogEntryPage extends BasePage {
     public void changeTheTitle(String newTitle) {
         driver.findElement(titleField).clear();
         driver.findElement(titleField).sendKeys(newTitle);
+        driver.findElement(successButton).click();
+    }
+
+    @Story("Success change the title of the blog entry")
+    public void successChange() {
         driver.findElement(successButton).click();
     }
 
@@ -137,6 +146,11 @@ public class EditBlogEntryPage extends BasePage {
     public void deleteBlogEntry() {
         driver.findElement(deleteButton).click();
         driver.findElement(confirmDelete).click();
+    }
+
+    @Story("Get page title")
+    public String getPageTitle() {
+        return driver.getTitle();
     }
 
     @Story("Log out editor user")
