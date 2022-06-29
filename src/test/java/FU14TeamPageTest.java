@@ -6,18 +6,21 @@ import org.openqa.selenium.TakesScreenshot;
 
 import java.io.ByteArrayInputStream;
 
-public class TestFU14TeamPage extends BaseTest {
+@Epic("Regression tests")
+@Feature("Test team page")
+@Link("https://docs.google.com/spreadsheets/d/17usWINlHQc322-yzI4dsEL2Y6qsqkedloQqOz0GRvz8/edit?usp=sharing")
+public class FU14TeamPageTest extends BaseTest {
 
     /**************************************************
      * Tests of this page
      **************************************************/
 
-    // Test FU14 team members
-    @Description("Test FU14 team members")
-    @Story("Test team page")
-    @Severity(SeverityLevel.NORMAL)
+
     @Test
-    public void teamMembersTest() {
+    @Story("Test FU14 team members")
+    @Description("Test Case 24")
+    @Severity(SeverityLevel.NORMAL)
+    public void TestTeamMembers() {
         Fu14TeamPage fu14TeamPage = new Fu14TeamPage(driver);
 
         fu14TeamPage.navigate();
@@ -31,12 +34,11 @@ public class TestFU14TeamPage extends BaseTest {
         Assertions.assertArrayEquals(expected, actual);
     }
 
-    // Test FU14 team members number
-    @Description("Test FU14 team members number")
-    @Story("Test team page")
-    @Severity(SeverityLevel.NORMAL)
     @Test
-    public void numberOfTeamMembersTest() {
+    @Story("Test FU14 team members number")
+    @Description("Test Case 25")
+    @Severity(SeverityLevel.NORMAL)
+    public void TestNumberOfTeamMembers() {
         Fu14TeamPage fu14TeamPage = new Fu14TeamPage(driver);
 
         fu14TeamPage.navigate();
@@ -48,12 +50,11 @@ public class TestFU14TeamPage extends BaseTest {
         Assertions.assertEquals(expected, actual);
     }
 
-    // Test FU14 team about us text
-    @Description("Test FU14 team about us text")
-    @Story("Test team page")
-    @Severity(SeverityLevel.NORMAL)
     @Test
-    public void fu14AboutTeamTest() {
+    @Story("Test FU14 team about us text")
+    @Description("Test Case 26")
+    @Severity(SeverityLevel.NORMAL)
+    public void TestFu14AboutTeam() {
         Fu14TeamPage fu14TeamPage = new Fu14TeamPage(driver);
 
         fu14TeamPage.navigate();

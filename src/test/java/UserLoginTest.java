@@ -7,19 +7,21 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.ByteArrayInputStream;
 
-public class TestUserLogin extends BaseTest {
+@Epic("Regression tests")
+@Feature("Test the user login")
+@Link("https://docs.google.com/spreadsheets/d/17usWINlHQc322-yzI4dsEL2Y6qsqkedloQqOz0GRvz8/edit?usp=sharing")
+public class UserLoginTest extends BaseTest {
 
     /**************************************************
      * Tests of this page
      **************************************************/
 
 
-    // Navigate to user login page
-    @Description("Navigate to user login page - TC13")
-    @Story("Test user login")
-    @Severity(SeverityLevel.TRIVIAL)
     @Test
-    public void navigateToLoginPageTest() {
+    @Story("Navigate to user login page")
+    @Description("Test Case 13")
+    @Severity(SeverityLevel.TRIVIAL)
+    public void TestNavigateToLoginPage() {
         UserLoginPage userLoginPage = new UserLoginPage(driver);
 
         userLoginPage.navigate();
@@ -34,13 +36,11 @@ public class TestUserLogin extends BaseTest {
         Assertions.assertEquals(expected, actual);
     }
 
-
-    // Test user login without remember me function
-    @Description("Test user login without remember me function - TC14")
-    @Story("Test user login")
-    @Severity(SeverityLevel.NORMAL)
     @Test
-    public void loginTest(){
+    @Story("Test user login without remember me function")
+    @Description("Test Case TC14")
+    @Severity(SeverityLevel.NORMAL)
+    public void TestLogin(){
         UserLoginPage userLoginPage = new UserLoginPage(driver, wait);
 
         userLoginPage.navigate();
@@ -57,13 +57,11 @@ public class TestUserLogin extends BaseTest {
         Assertions.assertEquals(expected, actual);
     }
 
-
-    // User login to site with remember me function
-    @Description("User login to site with remember me function - TC15")
-    @Story("Test user login")
-    @Severity(SeverityLevel.NORMAL)
     @Test
-    public void loginRememberTest(){
+    @Story("User login to site with remember me function")
+    @Description("Test Case 15")
+    @Severity(SeverityLevel.NORMAL)
+    public void TestLoginRemember(){
         UserLoginPage userLoginPage = new UserLoginPage(driver);
 
         userLoginPage.navigate();
@@ -80,5 +78,4 @@ public class TestUserLogin extends BaseTest {
 
         Assertions.assertTrue(isRememberMe);
     }
-
 }

@@ -1,7 +1,7 @@
+import io.qameta.allure.Story;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -71,12 +71,13 @@ public class EditBlogEntryPage extends BasePage {
      * Methods
      **************************************************/
 
-    // Navigate to the public page
+
+    @Story("Navigate to the public page")
     public void navigate() {
         driver.navigate().to(urlPublic);
     }
 
-    // Navigate to the admin login page and login
+    @Story("Navigate to the admin login page and login")
     public void navigateAndLogin() {
         driver.navigate().to(url);
         driver.findElement(userNameField).sendKeys(TestData.editorUsername);
@@ -84,19 +85,19 @@ public class EditBlogEntryPage extends BasePage {
         driver.findElement(loginButton).click();
     }
 
-    // Change the title of the blog entry
+    @Story("Change the title of the blog entry")
     public void changeTheTitle(String newTitle) {
         driver.findElement(titleField).clear();
         driver.findElement(titleField).sendKeys(newTitle);
         driver.findElement(successButton).click();
     }
 
-    // Get the header text
+    @Story("Get the header text")
     public String headerText() {
         return driver.findElement(titleH1).getText();
     }
 
-    // Create a file to save the title and the date of the blog entry
+    @Story("Create a file to save the title and the date of the blog entry")
     public void createFile() {
         try {
             File myObj = new File(TestData.saveBlogEntryFilePath);
@@ -111,7 +112,7 @@ public class EditBlogEntryPage extends BasePage {
         }
     }
 
-    // Save the title and the date of the blog entry
+    @Story("Save the title and the date of the blog entry")
     public void saveToFile() {
         try {
             FileWriter myWriter = new FileWriter(TestData.saveBlogEntryFilePath);
@@ -132,15 +133,13 @@ public class EditBlogEntryPage extends BasePage {
         }
     }
 
-
-    // Delete blog entry
+    @Story("Delete blog entry")
     public void deleteBlogEntry() {
         driver.findElement(deleteButton).click();
         driver.findElement(confirmDelete).click();
     }
 
-
-    // Log out editor user
+    @Story("Log out editor user")
     public void logOutEditor() {
         driver.findElement(logOutButton).click();
     }

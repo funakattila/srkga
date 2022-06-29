@@ -1,3 +1,4 @@
+import io.qameta.allure.Story;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -42,12 +43,12 @@ public class BlogsPage extends BasePage {
      * Methods
      **************************************************/
 
-    // Navigate to the page
+    @Story("Navigate to the page")
     public void navigate() {
         driver.navigate().to(url);
     }
 
-    // Count all the published blog
+    @Story("Count all the published blog")
     public int countAllBlogTitles() {
         int result = 0;
         List<WebElement> list = driver.findElements(blogEntryTitle);
@@ -74,7 +75,7 @@ public class BlogsPage extends BasePage {
         return result;
     }
 
-    // Get all the blog titles
+    @Story("Get all the blog titles")
     public String[] getAllBlogTitlesArray() {
         int counter = 0;
         String[] titles = new String[countAllBlogTitles()];
@@ -114,7 +115,5 @@ public class BlogsPage extends BasePage {
 
         return titles;
     }
-
-
 
 }

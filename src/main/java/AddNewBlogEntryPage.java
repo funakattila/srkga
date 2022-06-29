@@ -1,5 +1,5 @@
+import io.qameta.allure.Story;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Cookie;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
@@ -104,11 +104,13 @@ public class AddNewBlogEntryPage extends BasePage {
         super(driver, wait);
     }
 
+
     /**************************************************
      * Methods
      **************************************************/
 
-    // Navigate to the admin login page and login
+
+    @Story("Navigate to the admin login page and login")
     public void navigateAndLogin() {
         driver.navigate().to(url);
         driver.findElement(userNameField).sendKeys(TestData.editorUsername);
@@ -116,7 +118,7 @@ public class AddNewBlogEntryPage extends BasePage {
         driver.findElement(loginButton).click();
     }
 
-    // Create new blog entry
+    @Story("Create new blog entry")
     public void createBlogEntry(String title) {
         Actions action = new Actions(driver);
 
@@ -140,7 +142,7 @@ public class AddNewBlogEntryPage extends BasePage {
         //driver.findElement(saveContentButton).click();
     }
 
-    // Get the title of the new entry
+    @Story("Get the title of the new entry")
     public String getNewBlogEntryTitle() {
         return driver.getTitle();
     }

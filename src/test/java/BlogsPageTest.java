@@ -1,22 +1,22 @@
-import io.qameta.allure.Description;
-import io.qameta.allure.Severity;
-import io.qameta.allure.SeverityLevel;
-import io.qameta.allure.Story;
+import io.qameta.allure.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class TestBlogsPage extends BaseTest {
+@Epic("Regression tests")
+@Feature("Test the blog entries")
+@Link("https://docs.google.com/spreadsheets/d/17usWINlHQc322-yzI4dsEL2Y6qsqkedloQqOz0GRvz8/edit?usp=sharing")
+public class BlogsPageTest extends BaseTest {
 
     /**************************************************
      * Tests of this page
      **************************************************/
 
-    // Check the number of the blog entries
-    @Description("Check the number of the blog entries - TC22")
-    @Story("Test the blog entries")
-    @Severity(SeverityLevel.CRITICAL)
+
     @Test
-    public void countBlogEntriesTest() {
+    @Story("Check the number of the blog entries")
+    @Description("Test Case 22")
+    @Severity(SeverityLevel.CRITICAL)
+    public void TestCountBlogEntries() {
         BlogsPage blogsPage = new BlogsPage(driver);
 
         blogsPage.navigate();
@@ -28,13 +28,11 @@ public class TestBlogsPage extends BaseTest {
         Assertions.assertEquals(expected, actual);
     }
 
-
-    // Check the title of the blog entries
-    @Description("Check the title of the blog entries - TC23")
-    @Story("Test the blog entries")
-    @Severity(SeverityLevel.CRITICAL)
     @Test
-    public void titleBlogEntriesTest() {
+    @Story("Check the titles of the blog entries")
+    @Description("Test Case 23")
+    @Severity(SeverityLevel.CRITICAL)
+    public void TestTitlesOfTheBlogEntries() {
         BlogsPage blogsPage = new BlogsPage(driver);
 
         blogsPage.navigate();
@@ -45,7 +43,4 @@ public class TestBlogsPage extends BaseTest {
 
         Assertions.assertArrayEquals(expected, actual);
     }
-
-
-
 }

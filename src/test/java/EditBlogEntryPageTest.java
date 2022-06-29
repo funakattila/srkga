@@ -1,23 +1,22 @@
-import io.qameta.allure.Description;
-import io.qameta.allure.Severity;
-import io.qameta.allure.SeverityLevel;
-import io.qameta.allure.Story;
+import io.qameta.allure.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class TestEditBlogEntryPage extends BaseTest {
+@Epic("Regression tests")
+@Feature("Test edit blog entry")
+@Link("https://docs.google.com/spreadsheets/d/17usWINlHQc322-yzI4dsEL2Y6qsqkedloQqOz0GRvz8/edit?usp=sharing")
+public class EditBlogEntryPageTest extends BaseTest {
 
     /**************************************************
      * Tests of this page
      **************************************************/
 
 
-    // Change the title of the blog entry
-    @Description("Change the title - TC18")
-    @Story("Edit blog entry")
-    @Severity(SeverityLevel.CRITICAL)
     @Test
-    public void changeBlogTitleTest() {
+    @Story("Change the title")
+    @Description("Test Case 18")
+    @Severity(SeverityLevel.CRITICAL)
+    public void TestChangeBlogTitle() {
         EditBlogEntryPage editBlogEntryPage = new EditBlogEntryPage(driver);
 
         editBlogEntryPage.navigateAndLogin();
@@ -31,13 +30,11 @@ public class TestEditBlogEntryPage extends BaseTest {
         Assertions.assertTrue(isStartWith);
     }
 
-
-    // Save the title and the date of the blog entry
-    @Description("Save the title and the date of the blog entry - TC19")
-    @Story("Edit blog entry")
-    @Severity(SeverityLevel.NORMAL)
     @Test
-    public void saveBlogTitleAndDateTest() {
+    @Story("Save the title and the date of the blog entry")
+    @Description("Test Case 19")
+    @Severity(SeverityLevel.NORMAL)
+    public void TestSaveBlogTitleAndDate() {
         EditBlogEntryPage editBlogEntryPage = new EditBlogEntryPage(driver);
 
         editBlogEntryPage.navigate();
@@ -47,12 +44,11 @@ public class TestEditBlogEntryPage extends BaseTest {
         //Assertions
     }
 
-    // Delete the blog entry
-    @Description("Delete the blog entry - TC20")
-    @Story("Edit blog entry")
-    @Severity(SeverityLevel.CRITICAL)
     @Test
-    public void deleteBlogEntryTest() {
+    @Story("Delete the blog entry")
+    @Description("Test Case 20")
+    @Severity(SeverityLevel.CRITICAL)
+    public void TestDeleteBlogEntry() {
         EditBlogEntryPage editBlogEntryPage = new EditBlogEntryPage(driver);
 
         editBlogEntryPage.navigateAndLogin();
@@ -61,13 +57,11 @@ public class TestEditBlogEntryPage extends BaseTest {
         //Assertions
     }
 
-
-    // Log out editor user
-    @Description("Log out editor user - TC21")
-    @Story("Edit blog entry")
-    @Severity(SeverityLevel.CRITICAL)
     @Test
-    public void logOutEditorUserTest() {
+    @Story("Log out editor user")
+    @Description("Test Case 21")
+    @Severity(SeverityLevel.CRITICAL)
+    public void TestLogOutEditorUser() {
         EditBlogEntryPage editBlogEntryPage = new EditBlogEntryPage(driver, wait);
 
         editBlogEntryPage.navigateAndLogin();

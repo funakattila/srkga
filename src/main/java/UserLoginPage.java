@@ -1,3 +1,4 @@
+import io.qameta.allure.Story;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -49,17 +50,17 @@ public class UserLoginPage extends BasePage {
      * Methods
      **************************************************/
 
-    // Navigate to the page
+    @Story("Navigate to the page")
     public void navigate() {
         driver.navigate().to(url);
     }
 
-    // Get the title of the page
+    @Story("Get the title of the page")
     public String getPageTitle() {
         return driver.getTitle();
     }
 
-    // User login
+    @Story("User login")
     public void loginUser(String username, String password, boolean isRememberMe) {
         driver.findElement(userNameField).sendKeys(username);
         driver.findElement(userPasswordField).sendKeys(password);

@@ -1,3 +1,4 @@
+import io.qameta.allure.Story;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -46,12 +47,12 @@ public class Fu14TeamPage extends BasePage {
      **************************************************/
 
 
-    // Navigate to the page
+    @Story("Navigate to the page")
     public void navigate() {
         driver.navigate().to(url);
     }
 
-    // Team members of this team
+    @Story("Team members of this team")
     public String[] teamMembers() {
         Actions actions = new Actions(driver);
         WebDriverWait wait = new WebDriverWait(driver, 20);
@@ -70,7 +71,7 @@ public class Fu14TeamPage extends BasePage {
         return team;
     }
 
-    // Count team members
+    @Story("Count team members")
     public int numberOfTeamMembers(String[] teamMembers) {
         int number = 0;
 
@@ -81,7 +82,7 @@ public class Fu14TeamPage extends BasePage {
         return number;
     }
 
-    // Get the about text
+    @Story("et the about text")
     public String getAboutTeamText() {
         Actions actions = new Actions(driver);
         WebDriverWait wait = new WebDriverWait(driver, 20);
@@ -93,8 +94,7 @@ public class Fu14TeamPage extends BasePage {
         return returnText + "\n";
     }
 
-
-    // Read text from file
+    @Story("ead text from file")
     public String readFileAboutTeam(String fileName) {
         String returnText = "";
         try {
