@@ -111,18 +111,21 @@ public class AddNewBlogEntryPage extends BasePage {
 
 
     @Story("Navigate to the admin login page and login")
-    public void navigateAndLogin() {
+    public void navigate() {
         driver.navigate().to(url);
-        driver.findElement(userNameField).sendKeys(TestData.editorUsername);
-        driver.findElement(passwordField).sendKeys(TestData.editorPassword);
+    }
+
+    @Story("Admin login")
+    public void adminLogin(String username, String password) {
+        driver.findElement(userNameField).sendKeys(username);
+        driver.findElement(passwordField).sendKeys(password);
         driver.findElement(loginButton).click();
     }
 
-    @Story("Create new blog entry")
-    public void createBlogEntry(String title) {
+    @Story("Create new blog entry page")
+    public void createBlogEntryPage(String title) {
         Actions action = new Actions(driver);
 
-        navigateAndLogin();
         driver.findElement(addButton).click();
         driver.findElement(titleField).sendKeys(title);
         driver.findElement(route).click();
@@ -131,15 +134,19 @@ public class AddNewBlogEntryPage extends BasePage {
         driver.findElement(dropdownList).click();
         driver.findElement(itemTemplate).click();
         action.moveToElement(driver.findElement(visibleNoButton)).click().build().perform();
-        //driver.findElement(visibleNoButton).click();
         driver.findElement(successButton).click();
+    }
+
+    @Story("Create new blog entry content")
+    public void createBlogEntryContent(String text) {
+        Actions action = new Actions(driver);
+
         driver.findElement(contentTabLink).click();
-        driver.findElement(blogText).sendKeys(TestData.text);
+        driver.findElement(blogText).sendKeys(text);
         driver.findElement(optionsTabLink).click();
         driver.findElement(publishedButton).click();
         driver.findElement(taxonomyCategoryField).sendKeys("blog", Keys.TAB);
         action.moveToElement(driver.findElement(saveContentButton)).click().build().perform();
-        //driver.findElement(saveContentButton).click();
     }
 
     @Story("Get the title of the new entry")

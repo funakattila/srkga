@@ -8,7 +8,6 @@ import java.io.ByteArrayInputStream;
 
 @Epic("Regression tests")
 @Feature("Test add new blog entry")
-@Link("https://docs.google.com/spreadsheets/d/17usWINlHQc322-yzI4dsEL2Y6qsqkedloQqOz0GRvz8/edit?usp=sharing")
 public class AddNewBlogEntryTest extends BaseTest {
 
     /**************************************************
@@ -20,10 +19,16 @@ public class AddNewBlogEntryTest extends BaseTest {
     @Story("User login as editor")
     @Description("Test Case 16")
     @Severity(SeverityLevel.CRITICAL)
-    public void TestLoginAsEditor() {
+    public void testLoginAsEditor() {
         AddNewBlogEntryPage addNewBlogEntryPage = new AddNewBlogEntryPage(driver);
 
-        addNewBlogEntryPage.navigateAndLogin();
+        addNewBlogEntryPage.navigate();
+        Allure.addAttachment("Admin user login page",
+                new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
+
+        addNewBlogEntryPage.adminLogin(TestData.editorUsername, TestData.editorPassword);
+        Allure.addAttachment("After login",
+                new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
 
         String expected = TestData.editorFullName;
         String actual = driver.findElement(TestData.editorFullNameH4).getText();
@@ -38,7 +43,21 @@ public class AddNewBlogEntryTest extends BaseTest {
     public void TestCreateBlogEntry() {
         AddNewBlogEntryPage addNewBlogEntryPage = new AddNewBlogEntryPage(driver);
 
-        addNewBlogEntryPage.createBlogEntry(TestData.newBlogEntryTitle);
+        addNewBlogEntryPage.navigate();
+        Allure.addAttachment("Admin user login page",
+                new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
+
+        addNewBlogEntryPage.adminLogin(TestData.editorUsername, TestData.editorPassword);
+        Allure.addAttachment("After login",
+                new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
+
+        addNewBlogEntryPage.createBlogEntryPage(TestData.newBlogEntryTitle);
+        Allure.addAttachment("Create page",
+                new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
+
+        addNewBlogEntryPage.createBlogEntryContent(TestData.text);
+        Allure.addAttachment("Add content",
+                new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
 
         driver.navigate().to(TestData.newBlogEntryURL);
         Allure.addAttachment("New blog entry",
