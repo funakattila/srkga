@@ -1,6 +1,5 @@
 import io.qameta.allure.*;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 
@@ -9,6 +8,7 @@ import java.io.File;
 
 @Epic("Regression tests")
 @Feature("Test edit blog entry")
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class EditBlogEntryPageTest extends BaseTest {
 
     /**************************************************
@@ -17,6 +17,7 @@ public class EditBlogEntryPageTest extends BaseTest {
 
 
     @Test
+    @Order(1)
     @Story("Change the title")
     @Description("Test Case 18")
     @Severity(SeverityLevel.CRITICAL)
@@ -39,6 +40,7 @@ public class EditBlogEntryPageTest extends BaseTest {
     }
 
     @Test
+    @Order(2)
     @Story("Save the title and the date of the blog entry")
     @Description("Test Case 19")
     @Severity(SeverityLevel.NORMAL)
@@ -54,6 +56,7 @@ public class EditBlogEntryPageTest extends BaseTest {
     }
 
     @Test
+    @Order(3)
     @Story("Delete the blog entry")
     @Description("Test Case 20")
     @Severity(SeverityLevel.CRITICAL)
@@ -73,6 +76,7 @@ public class EditBlogEntryPageTest extends BaseTest {
     }
 
     @Test
+    @Order(4)
     @Story("Log out editor user")
     @Description("Test Case 21")
     @Severity(SeverityLevel.CRITICAL)
