@@ -52,10 +52,10 @@ public class TestData {
 
 
     // TestBlogsPage
-    public final static int countBlogEntires = 27; //in allure report the dummy blog entry won't clear
-    public final static String[] blogTitlesArray = {"BAJNOKI FORDULÓK ÚJABB HÉTVÉGÉJE", "LEGKISEBBJEINK A PÁLYÁN",
-            "ÚJRA A PÁLYÁN", "HÉTVÉGI JÁTÉKMARATON A WÁBERER SPORTCSARNOKBAN", "MEGKEZDTÜK A TAVASZI SZEZONT", "ADÓ " +
-            "1% FELAJÁNLÁSA", "SZIVACSKÉZILABDA FELKÉSZÜLÉSI TORNA MEZŐKÖVESDEN", "EGY HÉTVÉGE - HAT MÉRKŐZÉS", "KÖSZ" +
+    public final static int countBlogEntires = 27; //in allure report the dummy blog entry won't clear until this test
+    public final static String[] blogTitlesArray = {"LOREM IPSUM", "BAJNOKI FORDULÓK ÚJABB HÉTVÉGÉJE",
+            "LEGKISEBBJEINK A PÁLYÁN", "ÚJRA A PÁLYÁN", "HÉTVÉGI JÁTÉKMARATON A WÁBERER SPORTCSARNOKBAN", "MEGKEZDTÜK" +
+            " A TAVASZI SZEZONT", "ADÓ 1% FELAJÁNLÁSA", "SZIVACSKÉZILABDA FELKÉSZÜLÉSI TORNA MEZŐKÖVESDEN", "EGY HÉTVÉGE - HAT MÉRKŐZÉS", "KÖSZ" +
             "ÖNJÜK ÖREGDIÁKJAINK TÁMOGATÁSÁT!", "NOVEMBERI VERSENYHÉTVÉGE", "FORDULÓ OKTÓBER 16-17", "LEGYÉL TE IS " +
             "KÉZILABDÁS", "EDZŐTÁBOR GYULAHÁZÁN", "INDUL AZ ÚJ SZEZON", "III. SRKGA KÉZILABDA TÁBOR - BESZÁMOLÓ",
             "III.SRKGA KÉZILABDA TÁBOR", "BRAVÚROS SZEREPLÉS HAJDÚNÁNÁSON", "ORSZÁGOS GYERMEK KUPA MEGMÉRETTETÉS A " +
