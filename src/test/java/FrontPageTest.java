@@ -64,7 +64,7 @@ public class FrontPageTest extends BaseTest {
 
         frontPage.navigate();
         frontPage.clickToAllowCookies();
-        action.moveToElement(driver.findElement(By.xpath("//*[@class=\"card\"]//h3"))).build().perform();
+        action.moveToElement(driver.findElement(By.xpath("//*[@class=\"card\"]"))).build().perform();
         Allure.addAttachment("Latest blog entries",
                 new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
 

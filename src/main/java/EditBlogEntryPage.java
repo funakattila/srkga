@@ -36,6 +36,9 @@ public class EditBlogEntryPage extends BasePage {
     // Success button
     private final By successButton = By.xpath("//*[@class=\"button success\"]");
 
+    // Clear cache button
+    private final By clearCache = By.xpath("//*[@id=\"admin-nav-quick-tray\"]/li[1]/a");
+
     // Title H1
     private final By titleH1 = By.xpath("//h1");
 
@@ -87,6 +90,11 @@ public class EditBlogEntryPage extends BasePage {
         driver.findElement(userNameField).sendKeys(username);
         driver.findElement(passwordField).sendKeys(password);
         driver.findElement(loginButton).click();
+    }
+
+    @Story("Clear the cache")
+    public void clearTheCache() {
+        driver.findElement(clearCache).click();
     }
 
     @Story("Change the title of the blog entry")

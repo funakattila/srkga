@@ -11,7 +11,6 @@ import java.util.List;
 
 @Epic("Regression tests")
 @Feature("Test the user registration")
-@Link("https://docs.google.com/spreadsheets/d/17usWINlHQc322-yzI4dsEL2Y6qsqkedloQqOz0GRvz8/edit?usp=sharing")
 public class UserRegisterTest extends BaseTest {
 
     /**************************************************

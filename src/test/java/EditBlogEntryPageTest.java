@@ -26,6 +26,8 @@ public class EditBlogEntryPageTest extends BaseTest {
 
         editBlogEntryPage.navigateAdminLoginPage();
         editBlogEntryPage.adminLogin(TestData.editorUsername, TestData.editorPassword);
+        editBlogEntryPage.clearTheCache();
+        driver.navigate().refresh();
         editBlogEntryPage.changeTheTitle(TestData.newTitle);
         Allure.addAttachment("Change title",
                 new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
