@@ -93,7 +93,8 @@ public class UserRegisterTest extends BaseTest {
         Allure.addAttachment("Screenshot",
                 new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
 
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@class=\"notices success green\"]/p")));
+        //wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@class=\"notices success
+        // green\"]/p")));
         WebElement succesLabel = driver.findElement(By.xpath("//*[@class=\"notices success green\"]/p"));
         Allure.addAttachment("Registration success",
                 new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
