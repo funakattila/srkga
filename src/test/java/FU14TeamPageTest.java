@@ -8,7 +8,6 @@ import java.io.ByteArrayInputStream;
 
 @Epic("Regression tests")
 @Feature("Test team page")
-@Link("https://docs.google.com/spreadsheets/d/17usWINlHQc322-yzI4dsEL2Y6qsqkedloQqOz0GRvz8/edit?usp=sharing")
 public class FU14TeamPageTest extends BaseTest {
 
     /**************************************************

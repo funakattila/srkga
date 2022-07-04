@@ -9,7 +9,7 @@ public class TestData {
     public final static String logoPath = "http://srkgakezilabda.hu/home/_jumbotron/logo.png";  // path of the logo
     public final static int numberOfBlogEntries = 6;    // number of latest blog entries on the main page
 
-    public final static String[] latestBlogEntryTitles = {"Bajnoki fordulók újabb hétvégéje",
+    public final static String[] latestBlogEntryTitles = {"Lorem Ipsum", "Bajnoki fordulók újabb hétvégéje",
             "Legkisebbjeink a " +
             "pályán", "Újra a pályán", "Hétvégi játékmaraton a Wáberer Sportcsarnokban", "Megkezdtük a tavaszi " +
             "szezont"}; // titles of the latest blog entries on the main page
@@ -53,8 +53,8 @@ public class TestData {
 
 
     // TestBlogsPage
-    public final static int countBlogEntires = 26; //in allure report the dummy blog entry won't clear until this test
-    public final static String[] blogTitlesArray = {"BAJNOKI FORDULÓK ÚJABB HÉTVÉGÉJE",
+    public final static int countBlogEntires = 27; //in allure report the dummy blog entry won't clear until this test
+    public final static String[] blogTitlesArray = {"LOREM IPSUM", "BAJNOKI FORDULÓK ÚJABB HÉTVÉGÉJE",
             "LEGKISEBBJEINK A PÁLYÁN", "ÚJRA A PÁLYÁN", "HÉTVÉGI JÁTÉKMARATON A WÁBERER SPORTCSARNOKBAN", "MEGKEZDTÜK" +
             " A TAVASZI SZEZONT", "ADÓ 1% FELAJÁNLÁSA", "SZIVACSKÉZILABDA FELKÉSZÜLÉSI TORNA MEZŐKÖVESDEN", "EGY HÉTVÉGE - HAT MÉRKŐZÉS", "KÖSZ" +
             "ÖNJÜK ÖREGDIÁKJAINK TÁMOGATÁSÁT!", "NOVEMBERI VERSENYHÉTVÉGE", "FORDULÓ OKTÓBER 16-17", "LEGYÉL TE IS " +

@@ -4,7 +4,6 @@ import org.junit.jupiter.api.Test;
 
 @Epic("Regression tests")
 @Feature("Test the blog entries")
-@Link("https://docs.google.com/spreadsheets/d/17usWINlHQc322-yzI4dsEL2Y6qsqkedloQqOz0GRvz8/edit?usp=sharing")
 public class BlogsPageTest extends BaseTest {
 
     /**************************************************
