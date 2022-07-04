@@ -4,9 +4,9 @@
 Jelen tesztkészlet, egy általam készített hobbiprojekt, a Sárospataki Református Kollégium Gimnáziumért Alapítvány kézilabda csapatának weboldalát teszteli.
 
 Az elkészített tesztekkel szeretném lefedni a vizsgaremek kötelező elemeit, illetve bemutatni az Allure Report-ban rejlő tesztjelentést készítő lehetőségeket.
-A tesztek JAVA nyelven íródtak, JUNIT 5-öt, Selenium-ot, használva, a tesztjelentés elkésztéséhez az Allure Reportot használtam, melynek futása a github repository frissítésekor automatikusan történik.
+A tesztek JAVA nyelven íródtak, JUNIT 5-öt, Selenium-ot, a tesztjelentés elkésztéséhez az Allure Reportot használva, melynek futása a github repository frissítésekor automatikusan történik.
 
-A tesztek elkészítésekor törekedtem, a tanult technikák minél szélesebbkörű alkalmazására. Az annotációk használatával növelve a tesztek, majd a tesztjelentés átláthatóságát, megérthetőségét. A DOM model használatával igyekeztem a rugalmasság, bővíthetőség lehetőségét megalapozni.  
+A tesztek elkészítésekor törekedtem, a tanult technikák minél szélesebbkörű alkalmazására. Az annotációk használatával növelve a tesztek, illetve a tesztjelentés átláthatóságát, megérthetőségét. A DOM model alkalmazásával igyekeztem a rugalmasság, bővíthetőség lehetőségét megalapozni a későbbi fejlesztésekhez.
 
 ## A vizsgamunka elemei
 
@@ -17,5 +17,5 @@ A tesztek elkészítésekor törekedtem, a tanult technikák minél szélesebbk�
 - A legutolsó tesztjelentés: [Allure Report](https://funakattila.github.io/srkga/42/)
 
 ## A tesztek futtatása
-- A riportálás futtatható a GitHub oldalon, a kapcsolódó action újra indításával
+- A riportálás futtatható a GitHub oldalon, a kapcsolódó action újra indításával (illetve a repo frissítésével automatikusan) 
 - A projekt fájlok letöltését követően, megfelelő tesztkörnyezetben, saját számítógépről (Ebben az esetben, bizonyos teszteknél, szükség lehet az elvárt eredmények módosítására)
