@@ -12,9 +12,9 @@ A tesztek elkészítésekor törekedtem, a tanult technikák minél szélesebbk�
 
 - A weboldal címe: [SRKGA - Kézilabda](http://srkgakezilabda.hu/)
 - A weboldal admin belépés címe: [SRKGA - Kézilabda](http://srkgakezilabda.hu/admin)
-- A tesztesetek tartalmazó táblázat: [Tesztesetek](https://docs.google.com/spreadsheets/d/17usWINlHQc322-yzI4dsEL2Y6qsqkedloQqOz0GRvz8/edit?usp=sharing)
-- A vizsgaunka GitHub Repository-ja: [SRKGA repo](https://github.com/funakattila/srkga)
-- A legutolsó tesztjelentés: [Allure Report](https://funakattila.github.io/srkga/42/)
+- A teszteseteket tartalmazó táblázat: [Tesztesetek](https://docs.google.com/spreadsheets/d/17usWINlHQc322-yzI4dsEL2Y6qsqkedloQqOz0GRvz8/edit?usp=sharing)
+- A vizsgamunka GitHub Repository-ja: [SRKGA repo](https://github.com/funakattila/srkga)
+- A legutolsó tesztjelentés: [Allure Report](https://funakattila.github.io/srkga/)
 
 ## A tesztek futtatása
 - A riportálás futtatható a GitHub oldalon, a kapcsolódó action újra indításával (illetve a repo frissítésével automatikusan) 
