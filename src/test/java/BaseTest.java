@@ -27,7 +27,7 @@ public class BaseTest {
         options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--disable-notifications");
         options.addArguments("--disable-extensions");
-        //options.addArguments("--headless");
+        options.addArguments("--headless");
         options.addArguments("--window-size=1920,1080");
         options.addArguments("start-maximized");
 
@@ -40,7 +40,7 @@ public class BaseTest {
     @AfterEach
     public void Close()
     {
-        //driver.close();
+        driver.close();
     }
 
 }
