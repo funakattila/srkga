@@ -6,7 +6,7 @@ Jelen tesztkészlet, egy általam készített hobbiprojekt, a Sárospataki Refor
 Az elkészített tesztekkel szeretném lefedni a vizsgaremek kötelező elemeit, illetve bemutatni az Allure Report-ban rejlő tesztjelentést készítő lehetőségeket.
 A tesztek JAVA nyelven íródtak, JUNIT 5-öt, Selenium-ot, a tesztjelentés elkésztéséhez az Allure Reportot használva, melynek futása a github repository frissítésekor automatikusan történik.
 
-A tesztek elkészítésekor törekedtem, a tanult technikák minél szélesebbkörű alkalmazására. Az annotációk használatával növelve a tesztek, illetve a tesztjelentés átláthatóságát, megérthetőségét. A DOM model alkalmazásával igyekeztem a rugalmasság, bővíthetőség lehetőségét megalapozni a későbbi fejlesztésekhez.
+A tesztek elkészítésekor törekedtem, a tanult technikák minél szélesebbkörű alkalmazására. Az annotációk használatával növelve a tesztek, illetve a tesztjelentés átláthatóságát, megérthetőségét. A POM model alkalmazásával igyekeztem a rugalmasság, bővíthetőség lehetőségét megalapozni a későbbi fejlesztésekhez.
 
 ## A vizsgamunka elemei
 
