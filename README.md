@@ -15,6 +15,7 @@ A tesztek elkészítésekor törekedtem, a tanult technikák minél szélesebbk�
 - A teszteseteket tartalmazó táblázat: [Tesztesetek](https://docs.google.com/spreadsheets/d/17usWINlHQc322-yzI4dsEL2Y6qsqkedloQqOz0GRvz8/edit?usp=sharing)
 - A vizsgamunka GitHub Repository-ja: [SRKGA repo](https://github.com/funakattila/srkga)
 - A legutolsó tesztjelentés: [Allure Report](https://funakattila.github.io/srkga/)
+- A vizsgaremek védéséhez készített prezentáció: [Google Slides](https://docs.google.com/presentation/d/1RjwY4oBoAuqpTDCwfOFdxH_Y-edzbjxSnkbZ7_jh9h8/edit?usp=sharing)
 
 ## A tesztek futtatása
 - A riportálás futtatható a GitHub oldalon, a kapcsolódó action újra indításával (illetve a repo frissítésével automatikusan) 
